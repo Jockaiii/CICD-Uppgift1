@@ -21,17 +21,17 @@ namespace CICD_Uppgift1.Controller
 
         }
 
-        public static void RequestSalaryChange()
+        protected static void RequestSalaryChange()
         {
 
         }
 
-        public static void RequestRoleChange()
+        protected static void RequestRoleChange()
         {
 
         }
 
-        public static  void RemoveAccount()
+        protected static  void RemoveAccount()
         {
 
         }
