@@ -6,4 +6,10 @@
     <RootNamespace>CICD_Uppgift1</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Controller\" />
+    <Folder Include="View\" />
+  </ItemGroup>
+
 </Project>
