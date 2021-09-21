@@ -25,10 +25,5 @@ namespace CICD_Uppgift1.Controller
         {
 
         }
-
-        public static void RemoveAccount()
-        {
-
-        }
     }
 }

@@ -4,22 +4,21 @@ using System.Text;
 
 namespace CICD_Uppgift1.Controller
 {
-    public abstract class Account
+    class UserAccount
     {
-        public virtual void CheckAccountBalance()
+        public static void RequestSalaryChange()
         {
 
         }
 
-        public virtual void CheckSalary()
+        public static void RequestRoleChange()
         {
 
         }
 
-        public virtual void CheckRole()
+        public static void RemoveAccount()
         {
 
         }
-
     }
 }
