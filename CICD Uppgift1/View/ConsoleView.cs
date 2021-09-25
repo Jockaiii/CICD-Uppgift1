@@ -6,5 +6,10 @@ namespace CICD_Uppgift1.View
 {
     class ConsoleView
     {
+        public static void PromtLogin()
+        {
+            Console.Write("UserName: ");
+            Console.Write("Password: ");
+        }
     }
 }

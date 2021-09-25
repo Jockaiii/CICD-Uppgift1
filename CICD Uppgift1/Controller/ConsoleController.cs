@@ -6,5 +6,9 @@ namespace CICD_Uppgift1.Controller
 {
     class ConsoleController
     {
+        public static void LoginInput()
+        {
+
+        }
     }
 }
