@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CICD_Uppgift1.View
+namespace CICD_Uppgift1.Views
 {
     class ConsoleView
     {

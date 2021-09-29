@@ -18,8 +18,9 @@ namespace CICD_Uppgift1.Models
             List<Account> logList = new List<Account>();
 
             using var db = new Database.Database();
-            var accountQuery = from l in db.AdminAccount.Include("Hej")
-                            select l;
+            var accountQuery = from l in db.AdminAccount.Include("Balance").Include("Salary").Include("Role")
+                               where l.Username = l.UserName
+                               select l;
 
             accountQuery.Balance = Balance;
             accountQuery.Salary = Salary;

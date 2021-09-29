@@ -9,11 +9,6 @@ namespace CICD_Uppgift1.Controllers
         public static void UserNameInput()
         {
             var input = Console.ReadLine();
-
-            if ()
-            {
-
-            }
         }
         public static void PasswordInput()
         {

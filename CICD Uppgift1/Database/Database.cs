@@ -8,7 +8,7 @@ namespace CICD_Uppgift1.Database
     {
         private static string DatabaseFile { get; } = "SalarySystem.db"; //<-- databasens namn
 
-        public DbSet<Models.Account> Account { get; set; }
+        public DbSet<Models.Account> UserAccount { get; set; }
         public DbSet<Models.AdminAccount> AdminAccount { get; set; }
 
         /// <summary>
