@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CICD_Uppgift1.View
 {
@@ -9,7 +7,9 @@ namespace CICD_Uppgift1.View
         public static void PromtLogin()
         {
             Console.Write("UserName: ");
+            Controllers.ConsoleController.UserNameInput();
             Console.Write("Password: ");
+            Controllers.ConsoleController.PasswordInput();
         }
     }
 }
