@@ -7,8 +7,6 @@ namespace CICD_Uppgift1.Models
     {
         public override void GetAccountDetails(string userName)
         {
-            List<Account> accountDetails = new List<Account>();
-
             using var db = new Database.MyDatabase();
 
             var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
