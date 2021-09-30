@@ -13,8 +13,7 @@ namespace CICD_Uppgift1.Helpers
 
             if (!db.AdminAccounts.Any() && !db.UserAccounts.Any())
             {
-                Seeder.UserAccountsInsert();
-                Seeder.AdminAccountsInsert();
+                Seeder.TablesInsert();
             }
         }
     }
