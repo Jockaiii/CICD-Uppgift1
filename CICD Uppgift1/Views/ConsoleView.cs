@@ -18,7 +18,7 @@ namespace CICD_Uppgift1.Views
                 {
                     var signedInAccount = new Models.UserAccount();
                     signedInAccount.GetAccountDetails(Controllers.ConsoleController.UserName);
-                    SignedInMenu();
+                    SignedInMenu(signedInAccount);
                     break;
                 }
                 ThreeFailedAttemps();
@@ -43,7 +43,7 @@ namespace CICD_Uppgift1.Views
             Console.WriteLine("You have entered the incorrect password 3 times");
         }
 
-        public static void SignedInMenu()
+        public static void SignedInMenu(Models.UserAccount signedInAccount)
         {
             bool exit = false;
             while(!exit)
@@ -53,12 +53,19 @@ namespace CICD_Uppgift1.Views
                 switch (Console.ReadLine())
                 {
                     case "1":
+                        Console.WriteLine($"Your current balance is: {signedInAccount.Balance}\nContinue?");
+                        Console.ReadKey();
                         break;
                     case "2":
+                        Console.WriteLine($"Your current salary is: {signedInAccount.Salary}");
+                        Console.ReadKey();
                         break;
                     case "3":
+                        Console.WriteLine($"Your role is: {signedInAccount.Role}");
+                        Console.ReadKey();
                         break;
                     case "4":
+                        Models.UserAccount.RequestSalaryChange(signedInAccount.UserName);
                         break;
                     case "5":
                         break;
@@ -72,7 +79,6 @@ namespace CICD_Uppgift1.Views
                         break;
                 }
             }
-            
         }
     }
 }

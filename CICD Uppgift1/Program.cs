@@ -6,9 +6,6 @@
         {
             Helpers.DatabaseBootstrapper.CheckTables();
             Views.ConsoleView.PromtLogin();
-
-            //var userAccount = new Models.UserAccount();
-            //userAccount.GetAccountDetails("lihgoiuyh");
         }
     }
 }
