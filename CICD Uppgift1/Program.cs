@@ -4,9 +4,10 @@ namespace CICD_Uppgift1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Helpers.DatabaseBootstrapper.CheckTables();
+            Views.ConsoleView.PromtLogin();
         }
     }
 }

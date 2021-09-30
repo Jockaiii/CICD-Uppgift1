@@ -1,18 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace CICD_Uppgift1.Models
 {
-    public class AdminAccount : Account
+    class AdminAccount : Account
     {
+        public override void GetAccountDetails(string userName)
+        {
+            List<Account> logList = new List<Account>();
+
+            using var db = new Database.MyDatabase();
+            var accountQuery = from l in db.AdminAccounts.Include("UserName").Include("Balance").Include("Salary").Include("Role")
+                               where l.UserName == userName
+                               select l;
+
+            Console.WriteLine(accountQuery);
+            //Balance = accountQuery.Balance;
+            //Salary = accountQuery.Salary;
+            //Role = accountQuery.Role;
+        }
+
         public static void CheckAccounts()
         {
             List<Account> accountList = new List<Account>();
 
-            using var db = new Database.Database();
-            var accountQuery = from l in db.UserAccount.Include("UserName").Include("Balance").Include("Salary").Include("Role")
+            using var db = new Database.MyDatabase();
+            var accountQuery = from l in db.UserAccounts.Include("UserName").Include("Balance").Include("Salary").Include("Role")
                                where l.Balance == l.Balance
                                orderby l.UserName descending
                                select l;
@@ -23,17 +38,14 @@ namespace CICD_Uppgift1.Models
 
         public static void CheckAccountRequests()
         {
-
         }
 
         public static void AdvanceSalaraySystem()
         {
-
         }
 
         public static void CreateLocalAccount()
         {
-
         }
     }
 }
