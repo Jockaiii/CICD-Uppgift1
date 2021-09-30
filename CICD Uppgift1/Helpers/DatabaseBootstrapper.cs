@@ -12,9 +12,7 @@ namespace CICD_Uppgift1.Helpers
             using var db = new Database.MyDatabase();
 
             if (!db.AdminAccounts.Any() && !db.UserAccounts.Any())
-            {
                 Seeder.TablesInsert();
-            }
         }
     }
 }

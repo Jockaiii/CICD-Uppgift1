@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace CICD_Uppgift1.Helpers
 {
     class Seeder
     {
+        /// <summary>
+        /// Metod som lägger in data in databasens tables.
+        /// </summary>
         public static void TablesInsert()
         {
             using var db = new Database.MyDatabase();

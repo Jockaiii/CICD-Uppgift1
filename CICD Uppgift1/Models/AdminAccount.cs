@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +11,7 @@ namespace CICD_Uppgift1.Models
             List<Account> logList = new List<Account>();
 
             using var db = new Database.MyDatabase();
-            var accountQuery = from l in db.AdminAccounts.Include("UserName").Include("Balance").Include("Salary").Include("Role")
+            var accountQuery = from l in db.AdminAccounts
                                where l.UserName == userName
                                select l;
 
@@ -27,7 +26,7 @@ namespace CICD_Uppgift1.Models
             List<Account> accountList = new List<Account>();
 
             using var db = new Database.MyDatabase();
-            var accountQuery = from l in db.UserAccounts.Include("UserName").Include("Balance").Include("Salary").Include("Role")
+            var accountQuery = from l in db.UserAccounts
                                where l.Balance == l.Balance
                                orderby l.UserName descending
                                select l;
