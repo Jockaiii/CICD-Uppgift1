@@ -8,31 +8,23 @@ namespace CICD_Uppgift1.Models
     {
         public override void GetAccountDetails(string userName)
         {
-            List<Account> logList = new List<Account>();
-
             using var db = new Database.MyDatabase();
-            var accountQuery = from l in db.AdminAccounts
-                               where l.UserName == userName
-                               select l;
 
-            Console.WriteLine(accountQuery);
-            //Balance = accountQuery.Balance;
-            //Salary = accountQuery.Salary;
-            //Role = accountQuery.Role;
+            var accountQuery = db.AdminAccounts.Where(w => w.UserName.Contains(userName)).ToList();
+
+            Balance = accountQuery[0].Balance;
+            Salary = accountQuery[0].Salary;
+            Role = accountQuery[0].Role;
         }
 
         public static void CheckAccounts()
         {
-            List<Account> accountList = new List<Account>();
-
             using var db = new Database.MyDatabase();
-            var accountQuery = from l in db.UserAccounts
-                               where l.Balance == l.Balance
-                               orderby l.UserName descending
-                               select l;
 
-            foreach (var log in accountQuery)
-                accountList.Add(log);
+            var accountQuery = db.UserAccounts.ToList();
+
+            foreach (var account in accountQuery)
+                Console.WriteLine(account);
         }
 
         public static void CheckAccountRequests()
