@@ -1,20 +1,41 @@
 ﻿using System;
+using System.Linq;
 
 namespace CICD_Uppgift1.Controllers
 {
     class ConsoleController
     {
-        public static string UserName { get; set; }
-        public static string Password { get; set; }
-        public static void UserNameInput()
+        public static string UserName = string.Empty;
+
+        public static Database.MyDatabase db = new Database.MyDatabase();
+
+        public static bool UserNameInput()
         {
             var input = Console.ReadLine();
-            UserName = input;
+            var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(input)).ToList();
+
+            if (accountQuery.Count > 0)
+            {
+                UserName = input;
+                return true;
+            }
+
+            Views.ConsoleView.UserNameNotFound(input);
+            return false;
         }
-        public static void PasswordInput()
+
+        public static bool PasswordInput()
         {
             var input = Console.ReadLine();
-            Password = input;
+            var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(UserName)).ToList();
+
+            if (input == accountQuery[0].Password)
+                return true;
+            else
+            {
+                Views.ConsoleView.IncorrectPassword();
+                return false;
+            }
         }
     }
 }

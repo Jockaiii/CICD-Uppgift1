@@ -5,10 +5,10 @@
         static void Main()
         {
             Helpers.DatabaseBootstrapper.CheckTables();
-            //Views.ConsoleView.PromtLogin();
+            Views.ConsoleView.PromtLogin();
 
-            var userAccount = new Models.UserAccount();
-            userAccount.GetAccountDetails("lihgoiuyh");
+            //var userAccount = new Models.UserAccount();
+            //userAccount.GetAccountDetails("lihgoiuyh");
         }
     }
 }
