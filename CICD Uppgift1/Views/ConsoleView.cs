@@ -10,6 +10,6 @@ namespace CICD_Uppgift1.Views
             Controllers.ConsoleController.UserNameInput();
             Console.Write("Password: ");
             Controllers.ConsoleController.PasswordInput();
-        
+        }
     }
 }
