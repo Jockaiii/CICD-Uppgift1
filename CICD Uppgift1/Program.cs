@@ -8,7 +8,7 @@
             //Views.ConsoleView.PromtLogin();
 
             var userAccount = new Models.UserAccount();
-            userAccount.GetAccountDetails("joakimandersson");
+            userAccount.GetAccountDetails("lihgoiuyh");
         }
     }
 }

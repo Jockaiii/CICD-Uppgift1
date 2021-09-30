@@ -11,6 +11,6 @@ namespace CICD_Uppgift1.Models
         public virtual int Salary { get; set; }
         public virtual string Role { get; set; }
 
-        public abstract void GetAccountDetails(string userName);
+        public abstract bool GetAccountDetails(string userName);
     }
 }

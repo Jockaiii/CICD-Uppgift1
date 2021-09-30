@@ -6,15 +6,20 @@ namespace CICD_Uppgift1.Models
 {
     class AdminAccount : Account
     {
-        public override void GetAccountDetails(string userName)
+        public override bool GetAccountDetails(string userName)
         {
             using var db = new Database.MyDatabase();
 
             var accountQuery = db.AdminAccounts.Where(w => w.UserName.Contains(userName)).ToList();
 
-            Balance = accountQuery[0].Balance;
-            Salary = accountQuery[0].Salary;
-            Role = accountQuery[0].Role;
+            if (accountQuery.Count > 0)
+            {
+                Balance = accountQuery[0].Balance;
+                Salary = accountQuery[0].Salary;
+                Role = accountQuery[0].Role;
+                return true;
+            }
+            return false;
         }
 
         public static void CheckAccounts()

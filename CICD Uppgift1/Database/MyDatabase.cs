@@ -8,7 +8,7 @@ namespace CICD_Uppgift1.Database
     {
         private static string DatabaseFile { get; } = "SalarySystem.db"; //<-- databasens namn
 
-        public DbSet<Models.UserAccount> UserAccounts { get; set; }
+        public DbSet<Models.UserAccount> UserAccounts { get; set; } // Eventuellt flytta in i en tabell? och sedan kolla ifall UserName == admin1 osv.
         public DbSet<Models.AdminAccount> AdminAccounts { get; set; }
 
         /// <summary>
