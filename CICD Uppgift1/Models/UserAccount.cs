@@ -16,7 +16,12 @@ namespace CICD_Uppgift1.Models
                                where l.UserName == userName
                                select l;
 
-            Console.WriteLine(accountQuery);
+            foreach (var data in accountQuery)
+                logList.Add(data);
+
+            foreach (var log in logList)
+
+                Console.WriteLine($"Username: {log.UserName}\nBalance: {log.Balance}\nSalary: {log.Salary}\nRole: {log.Role}");
             //Balance = accountQuery.Balance;
             //Salary = accountQuery.Salary;
             //Role = accountQuery.Role;

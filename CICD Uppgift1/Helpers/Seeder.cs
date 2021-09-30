@@ -6,24 +6,15 @@ namespace CICD_Uppgift1.Helpers
 {
     class Seeder
     {
-        /// <summary>
-        /// Metod som lägger in objekt (data) in i tabellen AdminAccounts.
-        /// </summary>
-        public static Database.MyDatabase db = new Database.MyDatabase();
-        public static void AdminAccountsInsert()
+        public static void TablesInsert()
         {
+            using var db = new Database.MyDatabase();
             db.UserAccounts.AddRange(userAccounts);
+            db.AdminAccounts.AddRange(adminAccounts);
+            db.SaveChanges();
         }
 
-        /// <summary>
-        /// Metod som lägger in objekt (data) in i tabellen UserAccounts.
-        /// </summary>
-        public static void UserAccountsInsert()
-        {
-            db.AdminAccounts.AddRange(AdminAccounts);
-        }
-
-        private static List<Models.AdminAccount> AdminAccounts = new List<Models.AdminAccount>
+        private static List<Models.AdminAccount> adminAccounts = new List<Models.AdminAccount>
         {
             new Models.AdminAccount { UserName = "admin1", Password = "admin1234", Balance = 999999, Salary = 999999, Role = "Administrator"}
         };

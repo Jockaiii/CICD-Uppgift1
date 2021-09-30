@@ -7,6 +7,8 @@ namespace CICD_Uppgift1
         static void Main()
         {
             Helpers.DatabaseBootstrapper.CheckTables();
+            var userAccount = new Models.UserAccount();
+            userAccount.GetAccountDetails("joakimandersson");
             Views.ConsoleView.PromtLogin();
         }
     }
