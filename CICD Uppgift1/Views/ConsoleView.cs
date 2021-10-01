@@ -18,7 +18,7 @@ namespace CICD_Uppgift1.Views
                 {
                     var signedInAccount = new Models.UserAccount();
                     signedInAccount.GetAccountDetails(Controllers.ConsoleController.UserName);
-                    SignedInMenu(signedInAccount);
+                    SignedInUserMenu(signedInAccount);
                     break;
                 }
             }
@@ -42,13 +42,13 @@ namespace CICD_Uppgift1.Views
             Console.WriteLine("You have entered the incorrect password 3 times");
         }
 
-        internal static void SignedInMenu(Models.UserAccount signedInAccount)
+        internal static void SignedInUserMenu(Models.UserAccount signedInAccount)
         {
             bool exit = false;
             while(!exit)
             {
                 Console.Clear();
-                Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] request salary change\n[5] request role change\n[6] remove account");
+                Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] request salary change\n[5] request role change\n[6] remove account\n[0] Exit");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -67,10 +67,12 @@ namespace CICD_Uppgift1.Views
                         Models.UserAccount.RequestSalaryChange(signedInAccount.UserName);
                         break;
                     case "5":
+                        Models.UserAccount.RequestRoleChange(signedInAccount.UserName);
                         break;
                     case "6":
+                        Models.UserAccount.RemoveAccount(signedInAccount.UserName);
                         break;
-                    case "7":
+                    case "0":
                         exit = true;
                         break;
                     default:
