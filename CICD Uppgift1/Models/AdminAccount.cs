@@ -6,7 +6,7 @@ namespace CICD_Uppgift1.Models
 {
     class AdminAccount : Account
     {
-        public override bool GetAccountDetails(string userName)
+        protected internal override bool GetAccountDetails(string userName)
         {
             using var db = new Database.MyDatabase();
 

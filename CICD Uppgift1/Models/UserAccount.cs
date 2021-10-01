@@ -4,7 +4,7 @@ namespace CICD_Uppgift1.Models
 {
     class UserAccount : Account
     {
-        public override bool GetAccountDetails(string userName)
+        protected internal override bool GetAccountDetails(string userName)
         {
             using var db = new Database.MyDatabase();
 
@@ -20,15 +20,15 @@ namespace CICD_Uppgift1.Models
             return false;
         }
 
-        public static void RequestSalaryChange(string userMame)
+        public static void RequestSalaryChange(string userName)
         {
         }
 
-        public static void RequestRoleChange(string userMame)
+        public static void RequestRoleChange(string userName)
         {
         }
 
-        public static void RemoveAccount(string userMame)
+        public static void RemoveAccount(string userName)
         {
         }
     }

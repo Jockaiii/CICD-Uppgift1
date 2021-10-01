@@ -23,7 +23,6 @@ namespace CICD_Uppgift1.Views
                 }
                 ThreeFailedAttemps();
             }
-            
         }
 
         public static void UserNameNotFound(string username)
