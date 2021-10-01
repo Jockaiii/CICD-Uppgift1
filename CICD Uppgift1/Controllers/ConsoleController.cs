@@ -5,11 +5,11 @@ namespace CICD_Uppgift1.Controllers
 {
     internal static class ConsoleController
     {
-        public static string UserName = string.Empty;
+        internal static string UserName = string.Empty;
 
-        public static Database.MyDatabase db = new Database.MyDatabase();
+        internal static Database.MyDatabase db = new Database.MyDatabase();
 
-        public static bool UserNameInput()
+        internal static bool UserNameInput()
         {
             var input = Console.ReadLine();
             var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(input)).ToList();
@@ -24,7 +24,7 @@ namespace CICD_Uppgift1.Controllers
             return false;
         }
 
-        public static bool PasswordInput()
+        internal static bool PasswordInput()
         {
             var input = Console.ReadLine();
             var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(UserName)).ToList();
