@@ -21,8 +21,8 @@ namespace CICD_Uppgift1.Views
                     SignedInMenu(signedInAccount);
                     break;
                 }
-                ThreeFailedAttemps();
             }
+            ThreeFailedAttemps();
         }
 
         internal static void UserNameNotFound(string username)
