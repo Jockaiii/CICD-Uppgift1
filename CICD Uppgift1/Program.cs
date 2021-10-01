@@ -1,8 +1,8 @@
 ﻿namespace CICD_Uppgift1
 {
-    class Program
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             Helpers.DatabaseBootstrapper.CheckTables();
             Views.ConsoleView.PromtLogin();

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CICD_Uppgift1.Models
 {
-    class AdminAccount : Account
+    internal class AdminAccount : Account
     {
         protected internal override bool GetAccountDetails(string userName)
         {

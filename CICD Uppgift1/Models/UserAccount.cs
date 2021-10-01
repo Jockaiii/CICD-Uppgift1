@@ -2,7 +2,7 @@
 
 namespace CICD_Uppgift1.Models
 {
-    class UserAccount : Account
+    internal class UserAccount : Account
     {
         protected internal override bool GetAccountDetails(string userName)
         {

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CICD_Uppgift1.Controllers
 {
-    class ConsoleController
+    internal static class ConsoleController
     {
         public static string UserName = string.Empty;
 

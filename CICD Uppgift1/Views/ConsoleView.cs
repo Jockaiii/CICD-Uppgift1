@@ -2,9 +2,9 @@
 
 namespace CICD_Uppgift1.Views
 {
-    class ConsoleView
+    internal static class ConsoleView
     {
-        public static void PromtLogin()
+        internal static void PromtLogin()
         {
             do
             {
@@ -25,24 +25,24 @@ namespace CICD_Uppgift1.Views
             }
         }
 
-        public static void UserNameNotFound(string username)
+        internal static void UserNameNotFound(string username)
         {
             Console.Clear();
             Console.WriteLine($"No account with username: {username} could be found. Please try again");
         }
 
-        public static void IncorrectPassword()
+        internal static void IncorrectPassword()
         {
             Console.WriteLine("You have inputed an incorrect password");
         }
 
-        public static void ThreeFailedAttemps()
+        internal static void ThreeFailedAttemps()
         {
             Console.Clear();
             Console.WriteLine("You have entered the incorrect password 3 times");
         }
 
-        public static void SignedInMenu(Models.UserAccount signedInAccount)
+        internal static void SignedInMenu(Models.UserAccount signedInAccount)
         {
             bool exit = false;
             while(!exit)

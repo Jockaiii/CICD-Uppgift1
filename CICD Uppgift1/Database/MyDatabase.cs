@@ -4,12 +4,12 @@ using System.IO;
 
 namespace CICD_Uppgift1.Database
 {
-    class MyDatabase : DbContext
+    internal class MyDatabase : DbContext
     {
         private static string DatabaseFile { get; } = "SalarySystem.db"; //<-- databasens namn
 
-        public DbSet<Models.UserAccount> UserAccounts { get; set; } // Eventuellt flytta in i en tabell? och sedan kolla ifall UserName == admin1 osv.
-        public DbSet<Models.AdminAccount> AdminAccounts { get; set; }
+        internal DbSet<Models.UserAccount> UserAccounts { get; set; } // Eventuellt flytta in i en tabell? och sedan kolla ifall UserName == admin1 osv.
+        internal DbSet<Models.AdminAccount> AdminAccounts { get; set; }
 
         /// <summary>
         /// Metod som hanterar path till databasen samt data source
