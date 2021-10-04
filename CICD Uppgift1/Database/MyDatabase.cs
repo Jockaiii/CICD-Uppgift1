@@ -10,6 +10,7 @@ namespace CICD_Uppgift1.Database
         internal static MyDatabase Db { get; set; } = new MyDatabase();
         internal DbSet<Models.UserAccount> UserAccounts { get; set; } // Eventuellt flytta in i en tabell? och sedan kolla ifall UserName == admin1 osv.
         internal DbSet<Models.AdminAccount> AdminAccounts { get; set; }
+        internal DbSet<Models.RequestPoll> RequestPolls { get; set; }
 
         /// <summary>
         /// Metod som hanterar path till databasen samt data source

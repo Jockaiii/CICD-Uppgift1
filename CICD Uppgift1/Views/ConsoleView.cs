@@ -5,7 +5,6 @@ namespace CICD_Uppgift1.Views
 {
     internal static class ConsoleView
     {
-        internal static List<Models.RequestPoll> RequestPolls { get; set; } = new List<Models.RequestPoll>();
         internal static void PromtLogin()
         {
             do
@@ -149,7 +148,7 @@ namespace CICD_Uppgift1.Views
         internal static void OutputCheckPollRequests()
         {
             int count = 0;
-            foreach (var poll in RequestPolls)
+            foreach (var poll in Database.MyDatabase.Db.RequestPolls)
             {
                 count++;
                 if (poll.Role != null)
