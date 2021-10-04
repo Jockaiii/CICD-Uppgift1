@@ -27,6 +27,10 @@ namespace CICD_Uppgift1.Database
             optionsBuilder.UseSqlite("Data Source = " + path + ";");
         }
 
+        /// <summary>
+        /// overrides OnModelCreating in order for me to create a composite key for the RequestPoll table. So that multiple requests can be made from the same account
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RequestPoll>().HasKey(c => new { c.Username, c.Salary, c.Role });

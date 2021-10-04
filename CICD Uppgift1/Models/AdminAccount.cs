@@ -45,7 +45,6 @@ namespace CICD_Uppgift1.Models
                 Views.ConsoleView.OutputString("No account request were found\nContinue?");
                 Controllers.ConsoleController.ConsoleInput();
             }
-                
         }
 
         /// <summary>
@@ -91,6 +90,9 @@ namespace CICD_Uppgift1.Models
             }
             else
                 Views.ConsoleView.OutputString($"There is no account with the username: {username} and password: {password}");
+
+            if (Database.MyDatabase.Db.UserAccounts.ToList().Count! > 0) // to avoid crash due to no accounts stored.
+                Helpers.Seeder.TablesInsert();
         }
     }
 }

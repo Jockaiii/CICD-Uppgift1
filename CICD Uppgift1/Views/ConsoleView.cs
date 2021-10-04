@@ -37,7 +37,7 @@ namespace CICD_Uppgift1.Views
                         OutputStringWithConsoleClear("You have entered the incorrect password 3 times");
                     break;
                 }
-            }    
+            }
         }
 
         /// <summary>

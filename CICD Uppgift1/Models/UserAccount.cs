@@ -33,16 +33,16 @@ namespace CICD_Uppgift1.Models
         /// <param name="oldSalary">the current salary the user has</param>
         public void RequestSalaryChange(string userName, int salary, int oldSalary)
         {
-            //if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName).ToList().Count > 0)
-            //{
-            //    Views.ConsoleView.OutputString("This account has already requested a salary change\nContinue?");
-            //    Controllers.ConsoleController.ConsoleInput();
-            //}
-            //else
-            //{
+            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName && w.Salary != 0).ToList().Count > 0)
+            {
+                Views.ConsoleView.OutputString("This account has already requested a salary change\nContinue?");
+                Controllers.ConsoleController.ConsoleInput();
+            }
+            else
+            {
                 Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, salary, oldSalary, "", ""));
                 Database.MyDatabase.Db.SaveChanges();
-            //}
+            }
         }
 
         /// <summary>
@@ -53,16 +53,16 @@ namespace CICD_Uppgift1.Models
         /// <param name="oldRole">the current role the user has</param>
         public void RequestRoleChange(string userName, string role, string oldRole)
         {
-            //if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName).ToList().Count > 0)
-            //{
-            //    Views.ConsoleView.OutputString("This account has already requested a role change\nContinue?");
-            //    Controllers.ConsoleController.ConsoleInput();
-            //}
-            //else
-            //{
+            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName && w.Role != "").ToList().Count > 0)
+            {
+                Views.ConsoleView.OutputString("This account has already requested a role change\nContinue?");
+                Controllers.ConsoleController.ConsoleInput();
+            }
+            else
+            {
                 Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, 0, 0, role, oldRole));
                 Database.MyDatabase.Db.SaveChanges();
-            //}
+            }
         }
 
         /// <summary>
@@ -79,6 +79,9 @@ namespace CICD_Uppgift1.Models
             }
             else
                 Views.ConsoleView.OutputString($"There is no account with the username: {userName} and password: {password}");
+
+            if (Database.MyDatabase.Db.UserAccounts.ToList().Count !> 0) // to avoid crash due to no accounts stored.
+                Helpers.Seeder.TablesInsert();
         }
     }
 }
