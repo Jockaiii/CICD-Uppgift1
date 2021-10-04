@@ -31,7 +31,10 @@ namespace CICD_Uppgift1.Models
 
         public static void RemoveAccount(string userName)
         {
-
+            using var db = new Database.MyDatabase();
+            var user = db.UserAccounts.Where(x => x.UserName == userName).ToList().Count > 0;
+            //db.UserAccounts.Remove(user);
+            db.SaveChanges();
         }
     }
 }
