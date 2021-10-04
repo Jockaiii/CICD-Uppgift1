@@ -27,8 +27,7 @@ namespace CICD_Uppgift1.Models
 
         public static void CheckAccountRequests()
         {
-            foreach(var poll in Views.ConsoleView.RequestPolls)
-                Console.WriteLine(poll);
+            Views.ConsoleView.OutputCheckPollRequests();
         }
 
         public static void AdvanceSalarySystem()

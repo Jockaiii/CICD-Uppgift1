@@ -155,5 +155,11 @@ namespace CICD_Uppgift1.Views
             foreach (var account in userAccounts)
                 Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
         }
+
+        internal static void OutputCheckPollRequests()
+        {
+            foreach (var poll in Views.ConsoleView.RequestPolls)
+                Console.WriteLine(poll);
+        }
     }
 }
