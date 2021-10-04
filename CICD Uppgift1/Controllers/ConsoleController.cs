@@ -7,8 +7,6 @@ namespace CICD_Uppgift1.Controllers
     {
         internal static string UserName = string.Empty;
         internal static bool UserAccount { get; set; }
-        private static Models.Account SignedInAccount { get; set; }
-
         internal static Database.MyDatabase db = new Database.MyDatabase();
 
         internal static bool UserNameInput()
