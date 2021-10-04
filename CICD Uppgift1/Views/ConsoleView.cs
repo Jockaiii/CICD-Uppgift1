@@ -154,8 +154,7 @@ namespace CICD_Uppgift1.Views
                 count++;
                 if (poll.Role != null)
                 {
-                    Console.WriteLine($"[{count}] {poll.Username} has requested to change their role from {poll.OldRole} to {poll.Role}");
-                    Console.WriteLine("Do you want to accept this request?\n [1] Yes\n [2] No");
+                    Console.WriteLine($"[{count}] {poll.Username} has requested to change their role from {poll.OldRole} to {poll.Role}\nDo you want to accept this request?\n [1] Yes\n [2] No");
                     switch (Console.ReadLine())
                     {
                         case "1":
@@ -169,6 +168,11 @@ namespace CICD_Uppgift1.Views
                             break;
                         case "2":
                             requestPolls.Remove(poll);
+                            break;
+                        default:
+                            Console.Clear();
+                            Console.WriteLine("Incorrect input Please try again");
+                            OutputCheckPollRequests(requestPolls);
                             break;
                     }
                 }
