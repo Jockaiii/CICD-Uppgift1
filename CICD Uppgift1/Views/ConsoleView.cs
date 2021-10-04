@@ -49,7 +49,7 @@ namespace CICD_Uppgift1.Views
             while(!exit)
             {
                 Console.Clear();
-                Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] request salary change\n[5] request role change\n[6] remove account\n[0] Exit");
+                Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] request salary change\n[5] request role change\n[6] remove account\n[7] sign out\n[0] Exit");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -81,6 +81,10 @@ namespace CICD_Uppgift1.Views
                         string password = Controllers.ConsoleController.ConsoleInput();
                         Models.UserAccount.RemoveAccount(username, password);
                         break;
+                    case "7":
+                        Console.Clear();
+                        PromtLogin();
+                        break;
                     case "0":
                         exit = true;
                         break;
@@ -102,7 +106,7 @@ namespace CICD_Uppgift1.Views
             while(!exit)
             {
                 Console.Clear();
-                Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] check accounts\n[5] check account requests\n[6] advance salary system\n[7] create local account\n[0] Exit");
+                Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] check accounts\n[5] check account requests\n[6] advance salary system\n[7] create local account\n[8] delete user account\n[9] sign out\n[0] Exit");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -145,6 +149,10 @@ namespace CICD_Uppgift1.Views
                         OutputString("Please enter your password: ");
                         string password2 = Controllers.ConsoleController.ConsoleInput();
                         Models.AdminAccount.RemoveUserAccount(username2, password2);
+                        break;
+                    case "9":
+                        Console.Clear();
+                        PromtLogin();
                         break;
                     case "0":
                         exit = true;
