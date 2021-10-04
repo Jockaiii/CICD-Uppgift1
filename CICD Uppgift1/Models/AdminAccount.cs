@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace CICD_Uppgift1.Models
@@ -8,9 +7,7 @@ namespace CICD_Uppgift1.Models
     {
         protected internal override bool GetAccountDetails(string userName)
         {
-            using var db = new Database.MyDatabase();
-
-            var accountQuery = db.AdminAccounts.Where(w => w.UserName.Contains(userName)).ToList();
+            var accountQuery = Database.MyDatabase.Db.AdminAccounts.Where(w => w.UserName.Contains(userName)).ToList();
 
             if (accountQuery.Count > 0)
             {
@@ -24,9 +21,7 @@ namespace CICD_Uppgift1.Models
 
         public static void CheckAccounts()
         {
-            using var db = new Database.MyDatabase();
-
-            var accountQuery = db.UserAccounts.ToList();
+            var accountQuery = Database.MyDatabase.Db.UserAccounts.ToList();
 
             foreach (var account in accountQuery)
                 Console.WriteLine(account);
@@ -34,33 +29,27 @@ namespace CICD_Uppgift1.Models
 
         public static void CheckAccountRequests()
         {
-            foreach(var item in Views.ConsoleView.RequestPolls)
-            {
-                Console.WriteLine(item);
-            }
+            foreach(var poll in Views.ConsoleView.RequestPolls)
+                Console.WriteLine(poll);
         }
 
         public static void AdvanceSalarySystem()
         {
-            using var db = new Database.MyDatabase();
-            foreach (var user in db.UserAccounts)
-            {
+            foreach (var user in Database.MyDatabase.Db.UserAccounts)
                 user.Balance += user.Salary;
-            }
-            db.SaveChanges();
+            Database.MyDatabase.Db.SaveChanges();
         }
 
         public static void CreateLocalAccount(string username, string password, int balance, int salary, string role)
         {
-            using var db = new Database.MyDatabase();
-            if(db.UserAccounts.Where(x => x.UserName == username).ToList().Count>0)
+            if(Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == username).ToList().Count>0)
             {
                 Console.WriteLine("That Username already exists.");
             }
             else
             {
-                db.UserAccounts.AddRange(new UserAccount { UserName = username, Password = password, Balance = balance, Salary = salary, Role = role });
-                db.SaveChanges();
+                Database.MyDatabase.Db.UserAccounts.AddRange(new UserAccount { UserName = username, Password = password, Balance = balance, Salary = salary, Role = role });
+                Database.MyDatabase.Db.SaveChanges();
             }
         }
     }

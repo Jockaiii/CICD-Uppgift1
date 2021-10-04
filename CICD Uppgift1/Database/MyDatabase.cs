@@ -7,7 +7,7 @@ namespace CICD_Uppgift1.Database
     internal class MyDatabase : DbContext
     {
         private static string DatabaseFile { get; } = "SalarySystem.db"; //<-- databasens namn
-
+        internal static MyDatabase Db { get; set; } = new MyDatabase();
         internal DbSet<Models.UserAccount> UserAccounts { get; set; } // Eventuellt flytta in i en tabell? och sedan kolla ifall UserName == admin1 osv.
         internal DbSet<Models.AdminAccount> AdminAccounts { get; set; }
 

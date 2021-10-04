@@ -6,8 +6,7 @@ namespace CICD_Uppgift1.Models
     {
         protected internal override bool GetAccountDetails(string userName)
         {
-            using var db = new Database.MyDatabase();
-            var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
+            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
 
             if (accountQuery.Count > 0)
             {
@@ -31,7 +30,6 @@ namespace CICD_Uppgift1.Models
 
         public static void RemoveAccount(string userName)
         {
-
         }
     }
 }
