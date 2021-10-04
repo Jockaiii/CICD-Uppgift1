@@ -128,15 +128,15 @@ namespace CICD_Uppgift1.Views
                         break;
                     case "7":
                         Console.WriteLine("Create a new Username:");
-                        var username = Console.ReadLine();
+                        var username = Controllers.ConsoleController.ConsoleInput();
                         Console.WriteLine("Create a new Password:");
-                        var password = Console.ReadLine();
+                        var password = Controllers.ConsoleController.ConsoleInput();
                         Console.WriteLine("Give the account a bank account balance:");
-                        var balance = Console.ReadLine();
+                        var balance = Controllers.ConsoleController.ConsoleInput();
                         Console.WriteLine("Give the account a salary:");
-                        var salary = Console.ReadLine();
+                        var salary = Controllers.ConsoleController.ConsoleInput();
                         Console.WriteLine("Give the account a role:");
-                        var role = Console.ReadLine();
+                        var role = Controllers.ConsoleController.ConsoleInput();
                         Models.AdminAccount.CreateLocalAccount(username, password, Convert.ToInt32(balance), Convert.ToInt32(salary), role);
                         break;
                     case "8":
