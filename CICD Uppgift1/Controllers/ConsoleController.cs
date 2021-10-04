@@ -71,5 +71,21 @@ namespace CICD_Uppgift1.Controllers
         {
             return Console.ReadLine();
         }
+
+        /// <summary>
+        /// Method responsible for handling correct integer input from user.
+        /// </summary>
+        /// <returns>An integer if input is valid</returns>
+        internal static int IntTryParseConsoleInput()
+        {
+            if (int.TryParse(Console.ReadLine(), out int result))
+                return result;
+            else
+            {
+                Views.ConsoleView.OutputString("Incorrect value, please try again");
+                IntTryParseConsoleInput();
+            }
+            return 0;
+        }
     }
 }

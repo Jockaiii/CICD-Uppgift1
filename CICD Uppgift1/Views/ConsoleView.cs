@@ -23,20 +23,21 @@ namespace CICD_Uppgift1.Views
                 {
                     if (Controllers.ConsoleController.UserAccount)
                     {
-                        var signedInAccount = new Models.UserAccount();
+                        var signedInAccount = new Models.UserAccount(); // Creates an instance of UserAccount to store and access UserAccount methods and properties.
                         signedInAccount.GetAccountDetails(Controllers.ConsoleController.UserName);
                         SignedInUserMenu(signedInAccount);
                     }
                     else
                     {
-                        var signedInAccount = new Models.AdminAccount();
+                        var signedInAccount = new Models.AdminAccount(); // Creates an instance of AdminAccount to store and access AdminAccount methods and properties.
                         signedInAccount.GetAccountDetails(Controllers.ConsoleController.UserName);
                         SignedInAdminMenu(signedInAccount);
                     }
+                    if (i == 2)
+                        OutputStringWithConsoleClear("You have entered the incorrect password 3 times");
                     break;
                 }
-            }
-            OutputStringWithConsoleClear("You have entered the incorrect password 3 times");
+            }    
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace CICD_Uppgift1.Views
             {
                 Console.Clear();
                 Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] request salary change\n[5] request role change\n[6] remove account\n[7] sign out\n[0] Exit");
-                switch (Console.ReadLine())
+                switch (Controllers.ConsoleController.ConsoleInput())
                 {
                     case "1":
                         Console.WriteLine($"Your current balance is: {signedInAccount.Balance}\nContinue?");
@@ -66,12 +67,12 @@ namespace CICD_Uppgift1.Views
                         break;
                     case "4":
                         Console.WriteLine("What salary do you want?");
-                        var salary = Convert.ToInt32(Console.ReadLine());
+                        var salary = Controllers.ConsoleController.IntTryParseConsoleInput();
                         signedInAccount.RequestSalaryChange(signedInAccount.UserName, salary, signedInAccount.Salary);
                         break;
                     case "5":
                         Console.WriteLine("What role you want to change to?");
-                        var role = Console.ReadLine();
+                        var role = Controllers.ConsoleController.ConsoleInput();
                         signedInAccount.RequestRoleChange(signedInAccount.UserName, role, signedInAccount.Role);
                         break;
                     case "6":
@@ -108,7 +109,7 @@ namespace CICD_Uppgift1.Views
             {
                 Console.Clear();
                 Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] check accounts\n[5] check account requests\n[6] advance salary system\n[7] create local account\n[8] delete user account\n[9] sign out\n[0] Exit");
-                switch (Console.ReadLine())
+                switch (Controllers.ConsoleController.ConsoleInput())
                 {
                     case "1":
                         Console.WriteLine($"Your current balance is: {signedInAccount.Balance}\nContinue?");
@@ -137,12 +138,12 @@ namespace CICD_Uppgift1.Views
                         Console.WriteLine("Create a new Password:");
                         var password = Controllers.ConsoleController.ConsoleInput();
                         Console.WriteLine("Give the account a bank account balance:");
-                        var balance = Controllers.ConsoleController.ConsoleInput();
+                        var balance = Controllers.ConsoleController.IntTryParseConsoleInput();
                         Console.WriteLine("Give the account a salary:");
-                        var salary = Controllers.ConsoleController.ConsoleInput();
+                        var salary = Controllers.ConsoleController.IntTryParseConsoleInput();
                         Console.WriteLine("Give the account a role:");
                         var role = Controllers.ConsoleController.ConsoleInput();
-                        signedInAccount.CreateLocalAccount(username, password, Convert.ToInt32(balance), Convert.ToInt32(salary), role);
+                        signedInAccount.CreateLocalAccount(username, password, balance, salary, role);
                         break;
                     case "8":
                         OutputString("Please enter your username: ");
@@ -193,26 +194,24 @@ namespace CICD_Uppgift1.Views
         /// <param name="requestPolls">the stored requestpolls in the database</param>--------------------------------------------------------------------------------------------------------------------------------------
         internal static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)
         {
-            int count = 0;
-            foreach (var poll in requestPolls)
+            for (int i = 0; i < requestPolls.Count; i++)
             {
-                count++;
-                if (poll.Role != "")
+                if (requestPolls[i].Role != "")
                 {
-                    Console.WriteLine($"[{count}] {poll.Username} has requested to change their role from {poll.OldRole} to {poll.Role}\nDo you want to accept this request?\n [1] Yes\n [2] No");
-                    switch (Console.ReadLine())
+                    Console.WriteLine($"[{i}] {requestPolls[i].Username} has requested to change their role from {requestPolls[i].OldRole} to {requestPolls[i].Role}\nDo you want to accept this request?\n [1] Yes\n [2] No");
+                    switch (Controllers.ConsoleController.ConsoleInput())
                     {
                         case "1":
-                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == poll.Username).FirstOrDefault();
+                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == requestPolls[i].Username).FirstOrDefault();
                             if(accountQuery != null)
                             {
-                                accountQuery.Role = poll.Role;
+                                accountQuery.Role = requestPolls[i].Role;
                                 Database.MyDatabase.Db.SaveChanges();
                             }
-                            requestPolls.Remove(poll);
+                            requestPolls.Remove(requestPolls[i]);
                             break;
                         case "2":
-                            requestPolls.Remove(poll);
+                            requestPolls.Remove(requestPolls[i]);
                             break;
                         default:
                             Console.Clear();
@@ -223,21 +222,21 @@ namespace CICD_Uppgift1.Views
                 }
                 else
                 {
-                    Console.WriteLine($"[{count}] {poll.Username} has requested to change their Salary from {poll.OldSalary} to {poll.Salary}");
+                    Console.WriteLine($"[{i}] {requestPolls[i].Username} has requested to change their Salary from {requestPolls[i].OldSalary} to {requestPolls[i].Salary}");
                     Console.WriteLine("Do you want to accept this request?\n [1] Yes\n [2] No");
-                    switch (Console.ReadLine())
+                    switch (Controllers.ConsoleController.ConsoleInput())
                     {
                         case "1":
-                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == poll.Username).FirstOrDefault();
+                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == requestPolls[i].Username).FirstOrDefault();
                             if (accountQuery != null)
                             {
-                                accountQuery.Salary = poll.Salary;
+                                accountQuery.Salary = requestPolls[i].Salary;
                                 Database.MyDatabase.Db.SaveChanges();
                             }
-                            requestPolls.Remove(poll);
+                            requestPolls.Remove(requestPolls[i]);
                             break;
                         case "2":
-                            requestPolls.Remove(poll);
+                            requestPolls.Remove(requestPolls[i]);
                             break;
                         default:
                             Console.Clear();
@@ -247,7 +246,6 @@ namespace CICD_Uppgift1.Views
                     }
                 }
             }
-            Console.ReadKey();
         }
 
         /// <summary>

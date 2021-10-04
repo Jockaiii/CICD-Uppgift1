@@ -33,8 +33,16 @@ namespace CICD_Uppgift1.Models
         /// <param name="oldSalary">the current salary the user has</param>
         public void RequestSalaryChange(string userName, int salary, int oldSalary)
         {
-            Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, salary, oldSalary, "",""));
-            Database.MyDatabase.Db.SaveChanges();
+            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName).ToList().Count > 0)
+            {
+                Views.ConsoleView.OutputString("This account has already requested a salary change\nContinue?");
+                Controllers.ConsoleController.ConsoleInput();
+            }
+            else
+            {
+                Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, salary, oldSalary, "", ""));
+                Database.MyDatabase.Db.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -45,7 +53,16 @@ namespace CICD_Uppgift1.Models
         /// <param name="oldRole">the current role the user has</param>
         public void RequestRoleChange(string userName, string role, string oldRole)
         {
-            Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, 0, 0, role, oldRole));
+            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName).ToList().Count > 0)
+            {
+                Views.ConsoleView.OutputString("This account has already requested a role change\nContinue?");
+                Controllers.ConsoleController.ConsoleInput();
+            }
+            else
+            {
+                Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, 0, 0, role, oldRole));
+                Database.MyDatabase.Db.SaveChanges();
+            }
         }
 
         /// <summary>
