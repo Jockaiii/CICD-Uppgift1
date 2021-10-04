@@ -31,16 +31,15 @@ namespace CICD_Uppgift1.Models
                 Console.WriteLine(account);
         }
 
-        public void CheckAccountRequests()
+        public static void CheckAccountRequests()
         {
         }
 
-        public void AdvanceSalaraySystem()
+        public static void AdvanceSalaraySystem()
         {
         }
 
-        public void CreateLocalAccount()
-        public void CreateLocalAccount()
+        public static void CreateLocalAccount()
         {
         }
     }

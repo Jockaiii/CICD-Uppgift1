@@ -19,16 +19,15 @@ namespace CICD_Uppgift1.Models
             return false;
         }
 
-        public void RequestSalaryChange(string userName)
+        public static void RequestSalaryChange(string userName)
         {
         }
 
-        public void RequestRoleChange(string userName)
+        public static void RequestRoleChange(string userName)
         {
         }
 
-        public void RemoveAccount(string userName)
-        public void RemoveAccount(string userName)
+        public static void RemoveAccount(string userName)
         {
         }
     }
