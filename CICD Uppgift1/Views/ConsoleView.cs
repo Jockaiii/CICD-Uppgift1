@@ -79,6 +79,7 @@ namespace CICD_Uppgift1.Views
                 }
             }
         }
+
         internal static void SignedInAdminMenu(Models.AdminAccount signedInAccount)
         {
             using var db = new Database.MyDatabase();
@@ -160,6 +161,7 @@ namespace CICD_Uppgift1.Views
         {
             Console.WriteLine(output);
         }
+
         internal static void OutputStringWithConsoleClear(string output)
         {
             Console.Clear();

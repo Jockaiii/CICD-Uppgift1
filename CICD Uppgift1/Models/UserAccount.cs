@@ -20,12 +20,12 @@ namespace CICD_Uppgift1.Models
 
         public static void RequestSalaryChange(string userName, int salary)
         {
-            Views.ConsoleView.RequestPolls.Add(new RequestPoll { Username = userName, Salary = salary });
+            Views.ConsoleView.RequestPolls.Add(new RequestPoll( userName, salary));
         }
 
         public static void RequestRoleChange(string userName, string role)
         {
-            Views.ConsoleView.RequestPolls.Add(new RequestPoll { Username = userName, Role = role });
+            Views.ConsoleView.RequestPolls.Add(new RequestPoll(userName, role));
         }
 
         public static void RemoveAccount(string userName)
