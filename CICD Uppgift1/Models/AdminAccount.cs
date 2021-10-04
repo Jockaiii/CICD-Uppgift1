@@ -24,7 +24,7 @@ namespace CICD_Uppgift1.Models
             var accountQuery = Database.MyDatabase.Db.UserAccounts.ToList();
 
             foreach (var account in accountQuery)
-                Console.WriteLine(account);
+                Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
         }
 
         public static void CheckAccountRequests()
