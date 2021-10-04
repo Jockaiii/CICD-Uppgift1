@@ -31,8 +31,8 @@ namespace CICD_Uppgift1.Views
                     }
                     break;
                 }
+                OutputStringWithConsoleClear("You have entered the incorrect password 3 times");
             }
-            OutputStringWithConsoleClear("You have entered the incorrect password 3 times");
         }
 
         internal static void SignedInUserMenu(Models.UserAccount signedInAccount)
