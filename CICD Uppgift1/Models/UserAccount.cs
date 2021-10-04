@@ -6,7 +6,8 @@ namespace CICD_Uppgift1.Models
     {
         protected internal override bool GetAccountDetails(string userName)
         {
-            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
+            using var db = new Database.MyDatabase();
+            var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
 
             if (accountQuery.Count > 0)
             {
@@ -18,18 +19,22 @@ namespace CICD_Uppgift1.Models
             return false;
         }
 
-        public static void RequestSalaryChange(string userName, int salary, int oldSalary)
+        public static void RequestSalaryChange(string userName, int salary)
         {
-            Views.ConsoleView.RequestPolls.Add(new RequestPoll( userName, salary, oldSalary));
+            Views.ConsoleView.RequestPolls.Add(new RequestPoll { Username = userName, Salary = salary });
         }
 
-        public static void RequestRoleChange(string userName, string role, string oldRole)
+        public static void RequestRoleChange(string userName, string role)
         {
-            Views.ConsoleView.RequestPolls.Add(new RequestPoll(userName, role, oldRole));
+            Views.ConsoleView.RequestPolls.Add(new RequestPoll { Username = userName, Role = role });
         }
 
         public static void RemoveAccount(string userName)
         {
+            using var db = new Database.MyDatabase();
+            var user = db.UserAccounts.Where(x => x.UserName == userName).ToList().Count > 0;
+            //db.UserAccounts.Remove(user);
+            db.SaveChanges();
         }
     }
 }
