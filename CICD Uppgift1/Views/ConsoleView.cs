@@ -36,23 +36,6 @@ namespace CICD_Uppgift1.Views
             ThreeFailedAttemps();
         }
 
-        internal static void UserNameNotFound(string username)
-        {
-            Console.Clear();
-            Console.WriteLine($"No account with username: {username} could be found. Please try again");
-        }
-
-        internal static void IncorrectPassword()
-        {
-            Console.WriteLine("You have inputed an incorrect password");
-        }
-
-        internal static void ThreeFailedAttemps()
-        {
-            Console.Clear();
-            Console.WriteLine("You have entered the incorrect password 3 times");
-        }
-
         internal static void SignedInUserMenu(Models.UserAccount signedInAccount)
         {
             bool exit = false;
@@ -148,6 +131,29 @@ namespace CICD_Uppgift1.Views
                         break;
                 }
             }
+        }
+
+        internal static void UserNameNotFound(string username)
+        {
+            Console.Clear();
+            Console.WriteLine($"No account with username: {username} could be found. Please try again");
+        }
+
+        internal static void IncorrectPassword()
+        {
+            Console.WriteLine("You have inputed an incorrect password");
+        }
+
+        internal static void ThreeFailedAttemps()
+        {
+            Console.Clear();
+            Console.WriteLine("You have entered the incorrect password 3 times");
+        }
+
+        internal static void OutputCheckAccounts(List<Models.UserAccount> userAccounts)
+        {
+            foreach (var account in userAccounts)
+                Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
         }
     }
 }

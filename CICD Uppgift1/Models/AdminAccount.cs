@@ -22,9 +22,7 @@ namespace CICD_Uppgift1.Models
         public static void CheckAccounts()
         {
             var accountQuery = Database.MyDatabase.Db.UserAccounts.ToList();
-
-            foreach (var account in accountQuery)
-                Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
+            Views.ConsoleView.OutputCheckAccounts(accountQuery);
         }
 
         public static void CheckAccountRequests()
