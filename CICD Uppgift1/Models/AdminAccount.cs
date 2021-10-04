@@ -69,5 +69,21 @@ namespace CICD_Uppgift1.Models
                 Database.MyDatabase.Db.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Method responsible for removing a users account from the database.
+        /// </summary>
+        /// <param name="username">the username of the account to be deleted</param>
+        public static void RemoveUserAccount(string username, string password)
+        {
+            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == username && x.Password == password).FirstOrDefault();
+            if (accountQuery != null)
+            {
+                Database.MyDatabase.Db.UserAccounts.Remove(accountQuery);
+                Database.MyDatabase.Db.SaveChanges();
+            }
+            else
+                Views.ConsoleView.OutputString($"There is no account with the username: {username} and password: {password}");
+        }
     }
 }

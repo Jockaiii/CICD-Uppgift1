@@ -75,7 +75,11 @@ namespace CICD_Uppgift1.Views
                         Models.UserAccount.RequestRoleChange(signedInAccount.UserName, role, signedInAccount.Role);
                         break;
                     case "6":
-                        Models.UserAccount.RemoveAccount(signedInAccount.UserName);
+                        OutputString("Please enter your username: ");
+                        string username = Controllers.ConsoleController.ConsoleInput();
+                        OutputString("Please enter your password: ");
+                        string password = Controllers.ConsoleController.ConsoleInput();
+                        Models.UserAccount.RemoveAccount(username, password);
                         break;
                     case "0":
                         exit = true;
@@ -134,6 +138,13 @@ namespace CICD_Uppgift1.Views
                         Console.WriteLine("Give the account a role:");
                         var role = Console.ReadLine();
                         Models.AdminAccount.CreateLocalAccount(username, password, Convert.ToInt32(balance), Convert.ToInt32(salary), role);
+                        break;
+                    case "8":
+                        OutputString("Please enter your username: ");
+                        string username2 = Controllers.ConsoleController.ConsoleInput();
+                        OutputString("Please enter your password: ");
+                        string password2 = Controllers.ConsoleController.ConsoleInput();
+                        Models.AdminAccount.RemoveUserAccount(username2, password2);
                         break;
                     case "0":
                         exit = true;
