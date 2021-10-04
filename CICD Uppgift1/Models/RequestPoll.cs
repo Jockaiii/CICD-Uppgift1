@@ -16,8 +16,8 @@ namespace CICD_Uppgift1.Models
             Username = username;
             Salary = salary;
             OldSalary = oldSalary;
-            Role = Role;
-            OldRole = OldRole;
+            Role = role;
+            OldRole = oldRole;
         }
     }
 }

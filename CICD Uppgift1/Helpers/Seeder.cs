@@ -10,16 +10,15 @@ namespace CICD_Uppgift1.Helpers
         /// </summary>
         public static void TablesInsert()
         {
-            using var db = new Database.MyDatabase();
-            if(!db.UserAccounts.Any())
+            if(!Database.MyDatabase.Db.UserAccounts.Any())
             {
-                db.UserAccounts.AddRange(userAccounts);
+                Database.MyDatabase.Db.UserAccounts.AddRange(userAccounts);
             }
-            if(!db.AdminAccounts.Any())
+            if(!Database.MyDatabase.Db.AdminAccounts.Any())
             {
-                db.AdminAccounts.AddRange(adminAccounts);
+                Database.MyDatabase.Db.AdminAccounts.AddRange(adminAccounts);
             }
-            db.SaveChanges();
+            Database.MyDatabase.Db.SaveChanges();
         }
 
         private static readonly List<Models.AdminAccount> adminAccounts = new List<Models.AdminAccount>
