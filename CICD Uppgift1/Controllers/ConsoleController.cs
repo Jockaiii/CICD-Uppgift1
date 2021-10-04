@@ -49,7 +49,7 @@ namespace CICD_Uppgift1.Controllers
                 return true;
             else
             {
-                Views.ConsoleView.IncorrectPassword();
+                Views.ConsoleView.OutputString("You have inputed an incorrect password");
                 return false;
             }
         }

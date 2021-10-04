@@ -33,7 +33,7 @@ namespace CICD_Uppgift1.Views
                     break;
                 }
             }
-            ThreeFailedAttemps();
+            OutputStringWithConsoleClear("You have entered the incorrect password 3 times");
         }
 
         internal static void SignedInUserMenu(Models.UserAccount signedInAccount)
@@ -139,17 +139,6 @@ namespace CICD_Uppgift1.Views
             Console.WriteLine($"No account with username: {username} could be found. Please try again");
         }
 
-        internal static void IncorrectPassword()
-        {
-            Console.WriteLine("You have inputed an incorrect password");
-        }
-
-        internal static void ThreeFailedAttemps()
-        {
-            Console.Clear();
-            Console.WriteLine("You have entered the incorrect password 3 times");
-        }
-
         internal static void OutputCheckAccounts(List<Models.UserAccount> userAccounts)
         {
             foreach (var account in userAccounts)
@@ -162,9 +151,14 @@ namespace CICD_Uppgift1.Views
                 Console.WriteLine(poll);
         }
 
-        internal static void OutputCreateLocalAccount()
+        internal static void OutputString(string output)
         {
-            Console.WriteLine("That Username already exists.");
+            Console.WriteLine(output);
+        }
+        internal static void OutputStringWithConsoleClear(string output)
+        {
+            Console.Clear();
+            Console.WriteLine(output);
         }
     }
 }

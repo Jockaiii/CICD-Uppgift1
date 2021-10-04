@@ -40,7 +40,7 @@ namespace CICD_Uppgift1.Models
         public static void CreateLocalAccount(string username, string password, int balance, int salary, string role)
         {
             if(Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == username).ToList().Count>0)
-                Views.ConsoleView.OutputCreateLocalAccount();
+                Views.ConsoleView.OutputString("That Username already exists.");
             else
             {
                 Database.MyDatabase.Db.UserAccounts.AddRange(new UserAccount { UserName = username, Password = password, Balance = balance, Salary = salary, Role = role });
