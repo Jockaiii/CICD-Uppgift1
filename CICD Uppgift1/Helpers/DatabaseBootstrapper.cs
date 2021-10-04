@@ -5,7 +5,7 @@ namespace CICD_Uppgift1.Helpers
     internal static class DatabaseBootstrapper
     {
         /// <summary>
-        /// Metod som kollar ifall alla tabeller är tomma när programmet startar. Och tillkallar metoderna som fyller på data till tabellerna ifall svaret är ja.
+        /// Method that checks if datatables are empty when the program starts. And calls methods to insert data if the answer is yes.
         /// </summary>
         internal static void CheckTables()
         {

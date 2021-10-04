@@ -6,14 +6,14 @@ namespace CICD_Uppgift1.Database
 {
     internal class MyDatabase : DbContext
     {
-        private static string DatabaseFile { get; } = "SalarySystem.db"; //<-- databasens namn
-        internal static MyDatabase Db { get; set; } = new MyDatabase();
-        internal DbSet<Models.UserAccount> UserAccounts { get; set; } // Eventuellt flytta in i en tabell? och sedan kolla ifall UserName == admin1 osv.
-        internal DbSet<Models.AdminAccount> AdminAccounts { get; set; }
-        internal DbSet<Models.RequestPoll> RequestPolls { get; set; }
+        private static string DatabaseFile { get; } = "SalarySystem.db"; //<-- The name of the database file.
+        internal static MyDatabase Db { get; set; } = new MyDatabase(); // A global property for a instance of the databse (DbContext functions etc)
+        internal DbSet<Models.UserAccount> UserAccounts { get; set; } // Used for EF to create UserAccounts table in the database.
+        internal DbSet<Models.AdminAccount> AdminAccounts { get; set; } // Used for EF to create AdminAccounts table in the database.
+        internal DbSet<Models.RequestPoll> RequestPolls { get; set; } // Used for EF to create RequestPolls table in the database.
 
         /// <summary>
-        /// Metod som hanterar path till databasen samt data source
+        /// Method that handles the path to the database aswell as the data source
         /// </summary>
         /// <param name="optionsBuilder"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

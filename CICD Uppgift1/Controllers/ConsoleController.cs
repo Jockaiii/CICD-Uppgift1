@@ -8,6 +8,11 @@ namespace CICD_Uppgift1.Controllers
         internal static string UserName = string.Empty;
         internal static bool UserAccount { get; set; }
 
+        /// <summary>
+        /// Method that validates the username input and stores the username for password check if the answer is yes. 
+        /// Else outputs failure to user. 
+        /// </summary>
+        /// <returns> a true or false bool for promtLogin to give the user another try or proceed to password validation.</returns>
         internal static bool UserNameInput()
         {
             var input = Console.ReadLine();
@@ -29,6 +34,10 @@ namespace CICD_Uppgift1.Controllers
             return false;
         }
 
+        /// <summary>
+        /// Method that validates the users inputed password. 
+        /// </summary>
+        /// <returns>true or false to either call method for userAccountDetails or give the user another try (maximum 3) to type in the password</returns>
         internal static bool PasswordInput()
         {
             var input = Console.ReadLine();

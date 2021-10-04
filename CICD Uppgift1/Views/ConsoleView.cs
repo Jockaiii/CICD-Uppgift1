@@ -6,6 +6,9 @@ namespace CICD_Uppgift1.Views
 {
     internal static class ConsoleView
     {
+        /// <summary>
+        /// Method that promts the login view for the user. aswell as calling the necessary methods for checking if the input is valid or not. and the corresponding output.
+        /// </summary>
         internal static void PromtLogin()
         {
             do
@@ -36,6 +39,10 @@ namespace CICD_Uppgift1.Views
             OutputStringWithConsoleClear("You have entered the incorrect password 3 times");
         }
 
+        /// <summary>
+        /// Method responsible for display the signed in menu for UserAccounts. aswell as calling the necessary methods or exiting the application or outputing data dependant on the users choice.
+        /// </summary>
+        /// <param name="signedInAccount">a locally stored UserAccount for output and project purposes.</param>
         internal static void SignedInUserMenu(Models.UserAccount signedInAccount)
         {
             bool exit = false;
@@ -80,6 +87,10 @@ namespace CICD_Uppgift1.Views
             }
         }
 
+        /// <summary>
+        /// Method responsible for display the signed in menu for AdminAccounts. aswell as calling the necessary methods or exiting the application or outputing data dependant on the users choice.
+        /// </summary>
+        /// <param name="signedInAccount">a locally stored UserAccount for output and project purposes.</param>
         internal static void SignedInAdminMenu(Models.AdminAccount signedInAccount)
         {
             using var db = new Database.MyDatabase();
@@ -134,18 +145,30 @@ namespace CICD_Uppgift1.Views
             }
         }
 
+        /// <summary>
+        /// Method responsible for outputing username not found to console.
+        /// </summary>
+        /// <param name="username">the inputed username from user</param>
         internal static void UserNameNotFound(string username)
         {
             Console.Clear();
             Console.WriteLine($"No account with username: {username} could be found. Please try again");
         }
 
+        /// <summary>
+        /// Method responsible for outputting stored UserAccounts in the database.
+        /// </summary>
+        /// <param name="userAccounts">The stored UserAccounts in the database</param>
         internal static void OutputCheckAccounts(List<Models.UserAccount> userAccounts)
         {
             foreach (var account in userAccounts)
                 Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
         }
 
+        /// <summary>
+        /// Method responsible for outputting stored pollrequests in the database. (adminaccount action to be moved into ConsoleController) TODO
+        /// </summary>
+        /// <param name="requestPolls">the stored requestpolls in the database</param>
         internal static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)
         {
             int count = 0;
@@ -201,16 +224,23 @@ namespace CICD_Uppgift1.Views
                             break;
                     }
                 }
-                    
             }
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Method responsible for outputting simple strings to the console.
+        /// </summary>
+        /// <param name="output">the string to be outputted</param>
         internal static void OutputString(string output)
         {
             Console.WriteLine(output);
         }
 
+        /// <summary>
+        /// Method responsible for outputting simple strings to the console but clearing the console from text beforehand.
+        /// </summary>
+        /// <param name="output">the string to be outputted</param>
         internal static void OutputStringWithConsoleClear(string output)
         {
             Console.Clear();
