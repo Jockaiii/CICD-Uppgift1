@@ -5,8 +5,8 @@ namespace CICD_Uppgift1.Controllers
 {
     internal static class ConsoleController
     {
-        internal static string UserName = string.Empty;
-        internal static bool UserAccount { get; set; }
+        internal static string UserName = string.Empty; // the inputed username
+        internal static bool UserAccount { get; set; } // bool to determine if the signed in account is a admin account or not.
 
         /// <summary>
         /// Method that validates the username input and stores the username for password check if the answer is yes.
