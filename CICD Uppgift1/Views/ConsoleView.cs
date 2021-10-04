@@ -118,7 +118,7 @@ namespace CICD_Uppgift1.Views
                         Models.AdminAccount.CheckAccountRequests();
                         break;
                     case "6":
-                        Models.AdminAccount.AdvanceSalaraySystem();
+                        Models.AdminAccount.AdvanceSalarySystem();
                         break;
                     case "7":
                         Models.AdminAccount.CreateLocalAccount();

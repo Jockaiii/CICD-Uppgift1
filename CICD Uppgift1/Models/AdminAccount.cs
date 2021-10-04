@@ -35,7 +35,7 @@ namespace CICD_Uppgift1.Models
         {
         }
 
-        public static void AdvanceSalaraySystem()
+        public static void AdvanceSalarySystem()
         {
         }
 
