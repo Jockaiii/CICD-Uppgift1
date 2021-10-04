@@ -194,6 +194,11 @@ namespace CICD_Uppgift1.Views
                         case "2":
                             requestPolls.Remove(poll);
                             break;
+                        default:
+                            Console.Clear();
+                            Console.WriteLine("Incorrect input Please try again");
+                            OutputCheckPollRequests(requestPolls);
+                            break;
                     }
                 }
                     
