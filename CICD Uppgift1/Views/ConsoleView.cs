@@ -148,12 +148,14 @@ namespace CICD_Uppgift1.Views
 
         internal static void OutputCheckPollRequests()
         {
+            int count = 0;
             foreach (var poll in RequestPolls)
             {
+                count++;
                 if (poll.Role != null)
-                    Console.WriteLine($"{poll.Username} has requested to change their role from {poll.OldRole} to {poll.Role}");
+                    Console.WriteLine($"[{count}] {poll.Username} has requested to change their role from {poll.OldRole} to {poll.Role}");
                 else
-                    Console.WriteLine($"{poll.Username} has requested to change their Salary from {poll.OldSalary} to {poll.Salary}");
+                    Console.WriteLine($"[{count}] {poll.Username} has requested to change their Salary from {poll.OldSalary} to {poll.Salary}");
             }
         }
 
