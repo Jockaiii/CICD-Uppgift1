@@ -60,12 +60,12 @@ namespace CICD_Uppgift1.Views
                     case "4":
                         Console.WriteLine("What salary do you want?");
                         var salary = Convert.ToInt32(Console.ReadLine());
-                        Models.UserAccount.RequestSalaryChange(signedInAccount.UserName, salary);
+                        Models.UserAccount.RequestSalaryChange(signedInAccount.UserName, salary, signedInAccount.Salary);
                         break;
                     case "5":
                         Console.WriteLine("What role you want to change to?");
                         var role = Console.ReadLine();
-                        Models.UserAccount.RequestRoleChange(signedInAccount.UserName, role);
+                        Models.UserAccount.RequestRoleChange(signedInAccount.UserName, role, signedInAccount.Role);
                         break;
                     case "6":
                         Models.UserAccount.RemoveAccount(signedInAccount.UserName);
@@ -151,9 +151,9 @@ namespace CICD_Uppgift1.Views
             foreach (var poll in RequestPolls)
             {
                 if (poll.Role != null)
-                    Console.WriteLine($"{poll.Username} has requested to change their role to {poll.Role}");
+                    Console.WriteLine($"{poll.Username} has requested to change their role from {poll.OldRole} to {poll.Role}");
                 else
-                    Console.WriteLine($"{poll.Username} has requested to change their Salary to {poll.Salary}");
+                    Console.WriteLine($"{poll.Username} has requested to change their Salary from {poll.OldSalary} to {poll.Salary}");
             }
         }
 
