@@ -189,7 +189,7 @@ namespace CICD_Uppgift1.Views
         }
 
         /// <summary>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        /// Method responsible for outputting stored pollrequests in the database. (adminaccount action to be moved into ConsoleController) TODO
+        /// Method responsible for outputting stored pollrequests in the database. (adminaccount action to be moved into AdminAccount.cs) TODO
         /// </summary>
         /// <param name="requestPolls">the stored requestpolls in the database</param>--------------------------------------------------------------------------------------------------------------------------------------
         internal static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)

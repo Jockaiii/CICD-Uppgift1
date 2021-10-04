@@ -42,6 +42,8 @@ namespace CICD_Uppgift1.Models
             {
                 Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, salary, oldSalary, "", ""));
                 Database.MyDatabase.Db.SaveChanges();
+                Views.ConsoleView.OutputString("Request made\nContinue?");
+                Controllers.ConsoleController.ConsoleInput();
             }
         }
 
@@ -62,6 +64,8 @@ namespace CICD_Uppgift1.Models
             {
                 Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, 0, 0, role, oldRole));
                 Database.MyDatabase.Db.SaveChanges();
+                Views.ConsoleView.OutputString("Request made\nContinue?");
+                Controllers.ConsoleController.ConsoleInput();
             }
         }
 
