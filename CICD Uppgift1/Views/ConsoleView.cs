@@ -196,22 +196,26 @@ namespace CICD_Uppgift1.Views
         {
             for (int i = 0; i < requestPolls.Count; i++)
             {
+                var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == requestPolls[i].Username).FirstOrDefault();
+                var requestPollQuery = Database.MyDatabase.Db.RequestPolls.Where(x => x.Username == requestPolls[i].Username).FirstOrDefault();
+
                 if (requestPolls[i].Role != "")
                 {
                     Console.WriteLine($"[{i}] {requestPolls[i].Username} has requested to change their role from {requestPolls[i].OldRole} to {requestPolls[i].Role}\nDo you want to accept this request?\n [1] Yes\n [2] No");
                     switch (Controllers.ConsoleController.ConsoleInput())
                     {
                         case "1":
-                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == requestPolls[i].Username).FirstOrDefault();
                             if(accountQuery != null)
                             {
-                                accountQuery.Role = requestPolls[i].Role;
-                                Database.MyDatabase.Db.SaveChanges();
+                                accountQuery.Role = requestPolls[i].Username;
+                                Database.MyDatabase.Db.UserAccounts.Update(accountQuery);
                             }
-                            requestPolls.Remove(requestPolls[i]);
+                            Database.MyDatabase.Db.RequestPolls.Remove(requestPollQuery);
+                            Database.MyDatabase.Db.SaveChanges();
                             break;
                         case "2":
-                            requestPolls.Remove(requestPolls[i]);
+                            Database.MyDatabase.Db.RequestPolls.Remove(requestPollQuery);
+                            Database.MyDatabase.Db.SaveChanges();
                             break;
                         default:
                             Console.Clear();
@@ -227,16 +231,17 @@ namespace CICD_Uppgift1.Views
                     switch (Controllers.ConsoleController.ConsoleInput())
                     {
                         case "1":
-                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == requestPolls[i].Username).FirstOrDefault();
                             if (accountQuery != null)
                             {
                                 accountQuery.Salary = requestPolls[i].Salary;
-                                Database.MyDatabase.Db.SaveChanges();
+                                Database.MyDatabase.Db.UserAccounts.Update(accountQuery);
                             }
-                            requestPolls.Remove(requestPolls[i]);
+                            Database.MyDatabase.Db.RequestPolls.Remove(requestPollQuery);
+                            Database.MyDatabase.Db.SaveChanges();
                             break;
                         case "2":
-                            requestPolls.Remove(requestPolls[i]);
+                            Database.MyDatabase.Db.RequestPolls.Remove(requestPollQuery);
+                            Database.MyDatabase.Db.SaveChanges();
                             break;
                         default:
                             Console.Clear();

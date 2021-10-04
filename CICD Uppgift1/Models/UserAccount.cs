@@ -33,7 +33,7 @@ namespace CICD_Uppgift1.Models
         /// <param name="oldSalary">the current salary the user has</param>
         public void RequestSalaryChange(string userName, int salary, int oldSalary)
         {
-            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName && w.Salary != 0).ToList().Count > 0)
+            if (Database.MyDatabase.Db.RequestPolls.Where(w => w.Username == userName && w.Salary != 0).ToList().Count > 0)
             {
                 Views.ConsoleView.OutputString("This account has already requested a salary change\nContinue?");
                 Controllers.ConsoleController.ConsoleInput();
@@ -53,7 +53,7 @@ namespace CICD_Uppgift1.Models
         /// <param name="oldRole">the current role the user has</param>
         public void RequestRoleChange(string userName, string role, string oldRole)
         {
-            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == userName && w.Role != "").ToList().Count > 0)
+            if (Database.MyDatabase.Db.RequestPolls.Where(w => w.Username == userName && w.Role != "").ToList().Count > 0)
             {
                 Views.ConsoleView.OutputString("This account has already requested a role change\nContinue?");
                 Controllers.ConsoleController.ConsoleInput();
