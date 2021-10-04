@@ -16,9 +16,18 @@ namespace CICD_Uppgift1.Views
                 Console.Write("Password: ");
                 if (Controllers.ConsoleController.PasswordInput())
                 {
-                    var signedInAccount = new Models.UserAccount();
-                    signedInAccount.GetAccountDetails(Controllers.ConsoleController.UserName);
-                    SignedInUserMenu(signedInAccount);
+                    if (Controllers.ConsoleController.UserAccount)
+                    {
+                        var signedInAccount = new Models.UserAccount();
+                        signedInAccount.GetAccountDetails(Controllers.ConsoleController.UserName);
+                        SignedInUserMenu(signedInAccount);
+                    }
+                    else
+                    {
+                        var signedInAccount = new Models.AdminAccount();
+                        signedInAccount.GetAccountDetails(Controllers.ConsoleController.UserName);
+                        SignedInAdminMenu(signedInAccount);
+                    }
                     break;
                 }
             }
@@ -56,11 +65,11 @@ namespace CICD_Uppgift1.Views
                         Console.ReadKey();
                         break;
                     case "2":
-                        Console.WriteLine($"Your current salary is: {signedInAccount.Salary}");
+                        Console.WriteLine($"Your current salary is: {signedInAccount.Salary}\nContinue?");
                         Console.ReadKey();
                         break;
                     case "3":
-                        Console.WriteLine($"Your role is: {signedInAccount.Role}");
+                        Console.WriteLine($"Your role is: {signedInAccount.Role}\nContinue?");
                         Console.ReadKey();
                         break;
                     case "4":
@@ -71,6 +80,48 @@ namespace CICD_Uppgift1.Views
                         break;
                     case "6":
                         Models.UserAccount.RemoveAccount(signedInAccount.UserName);
+                        break;
+                    case "0":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Incorrect input, please try again");
+                        break;
+                }
+            }
+        }
+        internal static void SignedInAdminMenu(Models.AdminAccount signedInAccount)
+        {
+            bool exit = false;
+            while(!exit)
+            {
+                Console.Clear();
+                Console.WriteLine("[1] check balance\n[2] check salary\n[3] check role\n[4] check accounts\n[5] check account requests\n[6] advance salary system\n[7] create local account\n[0] Exit");
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        Console.WriteLine($"Your current balance is: {signedInAccount.Balance}\nContinue?");
+                        Console.ReadKey();
+                        break;
+                    case "2":
+                        Console.WriteLine($"Your current salary is: {signedInAccount.Salary}\nContinue?");
+                        Console.ReadKey();
+                        break;
+                    case "3":
+                        Console.WriteLine($"Your role is: {signedInAccount.Role}\nContinue?");
+                        Console.ReadKey();
+                        break;
+                    case "4":
+                        Models.AdminAccount.CheckAccounts();
+                        break;
+                    case "5":
+                        Models.AdminAccount.CheckAccountRequests();
+                        break;
+                    case "6":
+                        Models.AdminAccount.AdvanceSalaraySystem();
+                        break;
+                    case "7":
+                        Models.AdminAccount.CreateLocalAccount();
                         break;
                     case "0":
                         exit = true;
