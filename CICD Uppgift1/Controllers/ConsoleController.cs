@@ -7,19 +7,18 @@ namespace CICD_Uppgift1.Controllers
     {
         internal static string UserName = string.Empty;
         internal static bool UserAccount { get; set; }
-        internal static Database.MyDatabase db = new Database.MyDatabase();
 
         internal static bool UserNameInput()
         {
             var input = Console.ReadLine();
 
-            if (db.UserAccounts.Where(w => w.UserName.Contains(input)).ToList().Count > 0)
+            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName.Contains(input)).ToList().Count > 0)
             {
                 UserName = input;
                 UserAccount = true;
                 return true;
             }
-            else if (db.AdminAccounts.Where(w => w.UserName.Contains(input)).ToList().Count > 0)
+            else if (Database.MyDatabase.Db.AdminAccounts.Where(w => w.UserName.Contains(input)).ToList().Count > 0)
             {
                 UserName = input;
                 UserAccount = false;
@@ -37,12 +36,12 @@ namespace CICD_Uppgift1.Controllers
 
             if (UserAccount)
             {
-                var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(UserName)).ToList();
+                var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName.Contains(UserName)).ToList();
                 tempPassword = accountQuery[0].Password;
             }
             else
             {
-                var accountQuery = db.AdminAccounts.Where(w => w.UserName.Contains(UserName)).ToList();
+                var accountQuery = Database.MyDatabase.Db.AdminAccounts.Where(w => w.UserName.Contains(UserName)).ToList();
                 tempPassword = accountQuery[0].Password;
             }
 
@@ -50,7 +49,7 @@ namespace CICD_Uppgift1.Controllers
                 return true;
             else
             {
-                Views.ConsoleView.IncorrectPassword();
+                Views.ConsoleView.OutputString("You have inputed an incorrect password");
                 return false;
             }
         }
