@@ -158,8 +158,13 @@ namespace CICD_Uppgift1.Views
 
         internal static void OutputCheckPollRequests()
         {
-            foreach (var poll in Views.ConsoleView.RequestPolls)
+            foreach (var poll in RequestPolls)
                 Console.WriteLine(poll);
+        }
+
+        internal static void OutputCreateLocalAccount()
+        {
+            Console.WriteLine("That Username already exists.");
         }
     }
 }
