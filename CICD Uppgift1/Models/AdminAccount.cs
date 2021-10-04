@@ -38,7 +38,10 @@ namespace CICD_Uppgift1.Models
         public void CheckAccountRequests()
         {
             var requestQuery = Database.MyDatabase.Db.RequestPolls.ToList();
-            Views.ConsoleView.OutputCheckPollRequests(requestQuery);
+            if (requestQuery.Count !> 0)
+                Views.ConsoleView.OutputString("No account request were found");
+            else
+                Views.ConsoleView.OutputCheckPollRequests(requestQuery);
         }
 
         /// <summary>
