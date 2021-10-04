@@ -6,8 +6,10 @@ namespace CICD_Uppgift1.Models
     {
         [Key]
         public string Username { get; set; } // Username of the account of which the requestpoll is created from.
+        [Key]
         public int Salary { get; set; } // the salary the user is requesting.
         public int OldSalary { get; set; } // the current salary of the account.
+        [Key]
         public string Role { get; set; } // the role the user is requesting.
         public string OldRole { get; set; } // the current role of the account.
 

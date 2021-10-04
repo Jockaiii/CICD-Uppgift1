@@ -2,14 +2,16 @@
 using CICD_Uppgift1.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CICD_Uppgift1.Migrations
 {
     [DbContext(typeof(MyDatabase))]
-    partial class MyDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20211004185444_added composite key for RequestPoll table")]
+    partial class addedcompositekeyforRequestPolltable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,12 +42,7 @@ namespace CICD_Uppgift1.Migrations
             modelBuilder.Entity("CICD_Uppgift1.Models.RequestPoll", b =>
                 {
                     b.Property<string>("Username")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Salary")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Role")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("OldRole")
@@ -54,7 +51,15 @@ namespace CICD_Uppgift1.Migrations
                     b.Property<int>("OldSalary")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Username", "Salary", "Role");
+                    b.Property<string>("Role")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Salary")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Username");
 
                     b.ToTable("RequestPolls");
                 });

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CICD_Uppgift1.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
 
@@ -24,6 +25,11 @@ namespace CICD_Uppgift1.Database
             path = Path.Combine(path, DatabaseFile);
 
             optionsBuilder.UseSqlite("Data Source = " + path + ";");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<RequestPoll>().HasKey(c => new { c.Username, c.Salary, c.Role });
         }
     }
 }
