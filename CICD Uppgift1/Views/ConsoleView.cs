@@ -145,10 +145,10 @@ namespace CICD_Uppgift1.Views
                 Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
         }
 
-        internal static void OutputCheckPollRequests()
+        internal static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)
         {
             int count = 0;
-            foreach (var poll in Database.MyDatabase.Db.RequestPolls)
+            foreach (var poll in requestPolls)
             {
                 count++;
                 if (poll.Role != null)
@@ -156,6 +156,7 @@ namespace CICD_Uppgift1.Views
                 else
                     Console.WriteLine($"[{count}] {poll.Username} has requested to change their Salary from {poll.OldSalary} to {poll.Salary}");
             }
+            Console.ReadKey();
         }
 
         internal static void OutputString(string output)

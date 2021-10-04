@@ -24,12 +24,13 @@ namespace CICD_Uppgift1.Models
 
         public static void RequestSalaryChange(string userName, int salary, int oldSalary)
         {
-            Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, salary, oldSalary));
+            Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, salary, oldSalary, "",""));
+            Database.MyDatabase.Db.SaveChanges();
         }
 
         public static void RequestRoleChange(string userName, string role, string oldRole)
         {
-            Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, role, oldRole));
+            Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, 0, 0, role, oldRole));
         }
 
         public static void RemoveAccount(string userName)

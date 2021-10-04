@@ -26,7 +26,8 @@ namespace CICD_Uppgift1.Models
 
         public static void CheckAccountRequests()
         {
-            Views.ConsoleView.OutputCheckPollRequests();
+            var requestQuery = Database.MyDatabase.Db.RequestPolls.ToList();
+            Views.ConsoleView.OutputCheckPollRequests(requestQuery);
         }
 
         public static void AdvanceSalarySystem()
