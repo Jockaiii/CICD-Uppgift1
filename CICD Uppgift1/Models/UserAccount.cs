@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace CICD_Uppgift1.Models
 {
@@ -7,8 +6,7 @@ namespace CICD_Uppgift1.Models
     {
         protected internal override bool GetAccountDetails(string userName)
         {
-            using var db = new Database.MyDatabase();
-            var accountQuery = db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
+            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
 
             if (accountQuery.Count > 0)
             {
@@ -35,13 +33,11 @@ namespace CICD_Uppgift1.Models
 
         public static void RemoveAccount(string userName)
         {
-            using var db = new Database.MyDatabase();
-
-            var accountQuery = db.UserAccounts.Where(x => x.UserName == userName).FirstOrDefault();
+            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == userName).FirstOrDefault();
             if(accountQuery != null)
             {
-                db.UserAccounts.Remove(accountQuery);
-                db.SaveChanges();
+                Database.MyDatabase.Db.UserAccounts.Remove(accountQuery);
+                Database.MyDatabase.Db.SaveChanges();
             }
         }
     }
