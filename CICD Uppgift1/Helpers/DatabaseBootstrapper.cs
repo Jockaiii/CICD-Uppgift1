@@ -9,7 +9,7 @@ namespace CICD_Uppgift1.Helpers
         /// </summary>
         internal static void CheckTables()
         {
-            if (!Database.MyDatabase.Db.AdminAccounts.Any() && !Database.MyDatabase.Db.UserAccounts.Any())
+            if (!Database.MyDatabase.Db.AdminAccounts.Any() || !Database.MyDatabase.Db.UserAccounts.Any())
                 Seeder.TablesInsert();
         }
     }

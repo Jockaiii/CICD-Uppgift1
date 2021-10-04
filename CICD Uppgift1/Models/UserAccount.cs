@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace CICD_Uppgift1.Models
 {
@@ -11,6 +12,8 @@ namespace CICD_Uppgift1.Models
 
             if (accountQuery.Count > 0)
             {
+                UserName = accountQuery[0].UserName;
+                Password = accountQuery[0].Password;
                 Balance = accountQuery[0].Balance;
                 Salary = accountQuery[0].Salary;
                 Role = accountQuery[0].Role;
@@ -32,9 +35,17 @@ namespace CICD_Uppgift1.Models
         public static void RemoveAccount(string userName)
         {
             using var db = new Database.MyDatabase();
-            var user = db.UserAccounts.Where(x => x.UserName == userName).ToList().Count > 0;
-            //db.UserAccounts.Remove(user);
-            db.SaveChanges();
+
+            var x = db.UserAccounts.Select(p => p.UserName);
+            foreach( var item in x)
+            {
+                var y = db.UserAccounts.Where(p => p.UserName == userName).FirstOrDefault();
+                if(y != null)
+                {
+                    db.UserAccounts.Remove(y);
+                    db.SaveChanges();
+                }
+            }
         }
     }
 }

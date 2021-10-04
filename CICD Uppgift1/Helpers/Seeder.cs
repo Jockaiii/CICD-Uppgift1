@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CICD_Uppgift1.Helpers
 {
@@ -10,8 +11,14 @@ namespace CICD_Uppgift1.Helpers
         public static void TablesInsert()
         {
             using var db = new Database.MyDatabase();
-            db.UserAccounts.AddRange(userAccounts);
-            db.AdminAccounts.AddRange(adminAccounts);
+            if(!db.UserAccounts.Any())
+            {
+                db.UserAccounts.AddRange(userAccounts);
+            }
+            if(!db.AdminAccounts.Any())
+            {
+                db.AdminAccounts.AddRange(adminAccounts);
+            }
             db.SaveChanges();
         }
 
