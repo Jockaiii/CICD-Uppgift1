@@ -188,10 +188,10 @@ namespace CICD_Uppgift1.Views
                 Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
         }
 
-        /// <summary>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        /// Method responsible for outputting stored pollrequests in the database. (adminaccount action to be moved into AdminAccount.cs) TODO
+        /// <summary>
+        /// Method responsible for outputting stored pollrequests in the database. aswell as updating necessary database tables.
         /// </summary>
-        /// <param name="requestPolls">the stored requestpolls in the database</param>--------------------------------------------------------------------------------------------------------------------------------------
+        /// <param name="requestPolls">the stored requestpolls in the database</param>
         internal static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)
         {
             for (int i = 0; i < requestPolls.Count; i++)
