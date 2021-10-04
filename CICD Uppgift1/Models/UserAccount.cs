@@ -36,15 +36,11 @@ namespace CICD_Uppgift1.Models
         {
             using var db = new Database.MyDatabase();
 
-            var x = db.UserAccounts.Select(p => p.UserName);
-            foreach( var item in x)
+            var accountQuery = db.UserAccounts.Where(x => x.UserName == userName).FirstOrDefault();
+            if(accountQuery != null)
             {
-                var y = db.UserAccounts.Where(p => p.UserName == userName).FirstOrDefault();
-                if(y != null)
-                {
-                    db.UserAccounts.Remove(y);
-                    db.SaveChanges();
-                }
+                db.UserAccounts.Remove(accountQuery);
+                db.SaveChanges();
             }
         }
     }
