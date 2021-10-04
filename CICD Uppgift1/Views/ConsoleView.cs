@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CICD_Uppgift1.Views
 {
@@ -151,10 +152,47 @@ namespace CICD_Uppgift1.Views
             foreach (var poll in requestPolls)
             {
                 count++;
-                if (poll.Role != "")
+                if (poll.Role != null)
+                {
                     Console.WriteLine($"[{count}] {poll.Username} has requested to change their role from {poll.OldRole} to {poll.Role}");
+                    Console.WriteLine("Do you want to accept this request?\n [1] Yes\n [2] No");
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == poll.Username).FirstOrDefault();
+                            if(accountQuery != null)
+                            {
+                                accountQuery.Role = poll.Role;
+                                Database.MyDatabase.Db.SaveChanges();
+                            }
+                            requestPolls.Remove(poll);
+                            break;
+                        case "2":
+                            requestPolls.Remove(poll);
+                            break;
+                    }
+                }
                 else
+                {
                     Console.WriteLine($"[{count}] {poll.Username} has requested to change their Salary from {poll.OldSalary} to {poll.Salary}");
+                    Console.WriteLine("Do you want to accept this request?\n [1] Yes\n [2] No");
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == poll.Username).FirstOrDefault();
+                            if (accountQuery != null)
+                            {
+                                accountQuery.Salary = poll.Salary;
+                                Database.MyDatabase.Db.SaveChanges();
+                            }
+                            requestPolls.Remove(poll);
+                            break;
+                        case "2":
+                            requestPolls.Remove(poll);
+                            break;
+                    }
+                }
+                    
             }
             Console.ReadKey();
         }
