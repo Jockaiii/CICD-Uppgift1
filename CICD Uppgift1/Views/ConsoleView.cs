@@ -92,6 +92,7 @@ namespace CICD_Uppgift1.Views
         }
         internal static void SignedInAdminMenu(Models.AdminAccount signedInAccount)
         {
+            using var db = new Database.MyDatabase();
             bool exit = false;
             while(!exit)
             {
@@ -118,10 +119,20 @@ namespace CICD_Uppgift1.Views
                         Models.AdminAccount.CheckAccountRequests();
                         break;
                     case "6":
-                        Models.AdminAccount.AdvanceSalaraySystem();
+                        Models.AdminAccount.AdvanceSalarySystem();
                         break;
                     case "7":
-                        Models.AdminAccount.CreateLocalAccount();
+                        Console.WriteLine("Create a new Username:");
+                        var username = Console.ReadLine();
+                        Console.WriteLine("Create a new Password:");
+                        var password = Console.ReadLine();
+                        Console.WriteLine("Give the account a bank account balance:");
+                        var balance = Console.ReadLine();
+                        Console.WriteLine("Give the account a salary:");
+                        var salary = Console.ReadLine();
+                        Console.WriteLine("Give the account a role:");
+                        var role = Console.ReadLine();
+                        Models.AdminAccount.CreateLocalAccount(username, password, Convert.ToInt32(balance), Convert.ToInt32(salary), role);
                         break;
                     case "0":
                         exit = true;

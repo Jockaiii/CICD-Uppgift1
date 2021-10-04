@@ -35,12 +35,23 @@ namespace CICD_Uppgift1.Models
         {
         }
 
-        public static void AdvanceSalaraySystem()
+        public static void AdvanceSalarySystem()
         {
+            using var db = new Database.MyDatabase();
         }
 
-        public static void CreateLocalAccount()
+        public static void CreateLocalAccount(string username, string password, int balance, int salary, string role)
         {
+            using var db = new Database.MyDatabase();
+            if(db.UserAccounts.Where(x => x.UserName == username).ToList().Count>0)
+            {
+                Console.WriteLine("That Username already exists.");
+            }
+            else
+            {
+                db.UserAccounts.AddRange(new UserAccount { UserName = username, Password = password, Balance = balance, Salary = salary, Role = role });
+                db.SaveChanges();
+            }
         }
     }
 }
