@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CICD_Uppgift1.Models
@@ -33,6 +34,10 @@ namespace CICD_Uppgift1.Models
 
         public static void CheckAccountRequests()
         {
+            foreach(var item in Views.ConsoleView.RequestPolls)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         public static void AdvanceSalarySystem()

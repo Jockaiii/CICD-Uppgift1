@@ -19,16 +19,19 @@ namespace CICD_Uppgift1.Models
             return false;
         }
 
-        public static void RequestSalaryChange(string userName)
+        public static void RequestSalaryChange(string userName, int salary)
         {
+            Views.ConsoleView.RequestPolls.Add(new RequestPoll { Username = userName, Salary = salary });
         }
 
-        public static void RequestRoleChange(string userName)
+        public static void RequestRoleChange(string userName, string role)
         {
+            Views.ConsoleView.RequestPolls.Add(new RequestPoll { Username = userName, Role = role });
         }
 
         public static void RemoveAccount(string userName)
         {
+
         }
     }
 }

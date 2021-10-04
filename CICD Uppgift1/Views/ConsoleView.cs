@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CICD_Uppgift1.Views
 {
     internal static class ConsoleView
     {
+        internal static List<Models.RequestPoll> RequestPolls { get; set; } = new List<Models.RequestPoll>();
         internal static void PromtLogin()
         {
             do
@@ -73,10 +75,14 @@ namespace CICD_Uppgift1.Views
                         Console.ReadKey();
                         break;
                     case "4":
-                        Models.UserAccount.RequestSalaryChange(signedInAccount.UserName);
+                        Console.WriteLine("What salary do you want?");
+                        var salary = Convert.ToInt32(Console.ReadLine());
+                        Models.UserAccount.RequestSalaryChange(signedInAccount.UserName, salary);
                         break;
                     case "5":
-                        Models.UserAccount.RequestRoleChange(signedInAccount.UserName);
+                        Console.WriteLine("What role you want to change to?");
+                        var role = Console.ReadLine();
+                        Models.UserAccount.RequestRoleChange(signedInAccount.UserName, role);
                         break;
                     case "6":
                         Models.UserAccount.RemoveAccount(signedInAccount.UserName);
