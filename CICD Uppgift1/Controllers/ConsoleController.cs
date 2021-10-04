@@ -12,13 +12,13 @@ namespace CICD_Uppgift1.Controllers
         {
             var input = Console.ReadLine();
 
-            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName.Contains(input)).ToList().Count > 0)
+            if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == input).ToList().Count > 0)
             {
                 UserName = input;
                 UserAccount = true;
                 return true;
             }
-            else if (Database.MyDatabase.Db.AdminAccounts.Where(w => w.UserName.Contains(input)).ToList().Count > 0)
+            else if (Database.MyDatabase.Db.AdminAccounts.Where(w => w.UserName == input).ToList().Count > 0)
             {
                 UserName = input;
                 UserAccount = false;
