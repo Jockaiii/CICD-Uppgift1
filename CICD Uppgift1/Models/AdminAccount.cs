@@ -38,6 +38,11 @@ namespace CICD_Uppgift1.Models
         public static void AdvanceSalarySystem()
         {
             using var db = new Database.MyDatabase();
+            foreach (var user in db.UserAccounts)
+            {
+                user.Balance += user.Salary;
+            }
+            db.SaveChanges();
         }
 
         public static void CreateLocalAccount(string username, string password, int balance, int salary, string role)
