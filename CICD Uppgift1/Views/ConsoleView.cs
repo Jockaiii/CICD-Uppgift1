@@ -67,19 +67,21 @@ namespace CICD_Uppgift1.Views
                     case "4":
                         Console.WriteLine("What salary do you want?");
                         var salary = Convert.ToInt32(Console.ReadLine());
-                        Models.UserAccount.RequestSalaryChange(signedInAccount.UserName, salary, signedInAccount.Salary);
+                        signedInAccount.RequestSalaryChange(signedInAccount.UserName, salary, signedInAccount.Salary);
                         break;
                     case "5":
                         Console.WriteLine("What role you want to change to?");
                         var role = Console.ReadLine();
-                        Models.UserAccount.RequestRoleChange(signedInAccount.UserName, role, signedInAccount.Role);
+                        signedInAccount.RequestRoleChange(signedInAccount.UserName, role, signedInAccount.Role);
                         break;
                     case "6":
                         OutputString("Please enter your username: ");
                         string username = Controllers.ConsoleController.ConsoleInput();
                         OutputString("Please enter your password: ");
                         string password = Controllers.ConsoleController.ConsoleInput();
-                        Models.UserAccount.RemoveAccount(username, password);
+                        signedInAccount.RemoveAccount(username, password);
+                        OutputString("Continue?");
+                        Console.ReadKey();
                         break;
                     case "7":
                         Console.Clear();
@@ -101,7 +103,6 @@ namespace CICD_Uppgift1.Views
         /// <param name="signedInAccount">a locally stored UserAccount for output and project purposes.</param>
         internal static void SignedInAdminMenu(Models.AdminAccount signedInAccount)
         {
-            using var db = new Database.MyDatabase();
             bool exit = false;
             while(!exit)
             {
@@ -122,13 +123,13 @@ namespace CICD_Uppgift1.Views
                         Console.ReadKey();
                         break;
                     case "4":
-                        Models.AdminAccount.CheckAccounts();
+                        signedInAccount.CheckAccounts();
                         break;
                     case "5":
-                        Models.AdminAccount.CheckAccountRequests();
+                        signedInAccount.CheckAccountRequests();
                         break;
                     case "6":
-                        Models.AdminAccount.AdvanceSalarySystem();
+                        signedInAccount.AdvanceSalarySystem();
                         break;
                     case "7":
                         Console.WriteLine("Create a new Username:");
@@ -141,14 +142,16 @@ namespace CICD_Uppgift1.Views
                         var salary = Controllers.ConsoleController.ConsoleInput();
                         Console.WriteLine("Give the account a role:");
                         var role = Controllers.ConsoleController.ConsoleInput();
-                        Models.AdminAccount.CreateLocalAccount(username, password, Convert.ToInt32(balance), Convert.ToInt32(salary), role);
+                        signedInAccount.CreateLocalAccount(username, password, Convert.ToInt32(balance), Convert.ToInt32(salary), role);
                         break;
                     case "8":
                         OutputString("Please enter your username: ");
                         string username2 = Controllers.ConsoleController.ConsoleInput();
                         OutputString("Please enter your password: ");
                         string password2 = Controllers.ConsoleController.ConsoleInput();
-                        Models.AdminAccount.RemoveUserAccount(username2, password2);
+                        signedInAccount.RemoveUserAccount(username2, password2);
+                        OutputString("Continue?");
+                        Console.ReadKey();
                         break;
                     case "9":
                         Console.Clear();
@@ -184,10 +187,10 @@ namespace CICD_Uppgift1.Views
                 Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
         }
 
-        /// <summary>
+        /// <summary>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /// Method responsible for outputting stored pollrequests in the database. (adminaccount action to be moved into ConsoleController) TODO
         /// </summary>
-        /// <param name="requestPolls">the stored requestpolls in the database</param>
+        /// <param name="requestPolls">the stored requestpolls in the database</param>--------------------------------------------------------------------------------------------------------------------------------------
         internal static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)
         {
             int count = 0;

@@ -31,7 +31,7 @@ namespace CICD_Uppgift1.Models
         /// <param name="userName">username of the account with the request</param>
         /// <param name="salary">the salary of which the user wants to request</param>
         /// <param name="oldSalary">the current salary the user has</param>
-        public static void RequestSalaryChange(string userName, int salary, int oldSalary)
+        public void RequestSalaryChange(string userName, int salary, int oldSalary)
         {
             Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, salary, oldSalary, "",""));
             Database.MyDatabase.Db.SaveChanges();
@@ -43,7 +43,7 @@ namespace CICD_Uppgift1.Models
         /// <param name="userName">username of the account with the request</param>
         /// <param name="role">the role of which the user wants to request</param>
         /// <param name="oldRole">the current role the user has</param>
-        public static void RequestRoleChange(string userName, string role, string oldRole)
+        public void RequestRoleChange(string userName, string role, string oldRole)
         {
             Database.MyDatabase.Db.RequestPolls.Add(new RequestPoll(userName, 0, 0, role, oldRole));
         }
@@ -52,7 +52,7 @@ namespace CICD_Uppgift1.Models
         /// Method responsible for removing the users account from the database.
         /// </summary>
         /// <param name="userName">the username of the account to be deleted</param>
-        public static void RemoveAccount(string userName, string password)
+        public void RemoveAccount(string userName, string password)
         {
             var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == userName && x.Password == password).FirstOrDefault();
             if(accountQuery != null)

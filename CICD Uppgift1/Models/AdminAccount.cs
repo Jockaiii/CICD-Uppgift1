@@ -26,7 +26,7 @@ namespace CICD_Uppgift1.Models
         /// <summary>
         /// Method responsible for gathring the stored UserAccounts on the database. aswell as calling necessary method to output the useraccounts to the console.
         /// </summary>
-        public static void CheckAccounts()
+        public void CheckAccounts()
         {
             var accountQuery = Database.MyDatabase.Db.UserAccounts.ToList();
             Views.ConsoleView.OutputCheckAccounts(accountQuery);
@@ -35,7 +35,7 @@ namespace CICD_Uppgift1.Models
         /// <summary>
         /// Method responsible for gathering the stored AccountRequests on the database. aswell as calling necessary method to output the RequestPolls to the console.
         /// </summary>
-        public static void CheckAccountRequests()
+        public void CheckAccountRequests()
         {
             var requestQuery = Database.MyDatabase.Db.RequestPolls.ToList();
             Views.ConsoleView.OutputCheckPollRequests(requestQuery);
@@ -44,7 +44,7 @@ namespace CICD_Uppgift1.Models
         /// <summary>
         /// Method responsible for advancing the salary by one month for all useraccounts in the database.
         /// </summary>
-        public static void AdvanceSalarySystem()
+        public void AdvanceSalarySystem()
         {
             foreach (var user in Database.MyDatabase.Db.UserAccounts)
                 user.Balance += user.Salary;
@@ -59,7 +59,7 @@ namespace CICD_Uppgift1.Models
         /// <param name="balance">balance of the local account</param>
         /// <param name="salary">salary of the local account</param>
         /// <param name="role">role of the local account</param>
-        public static void CreateLocalAccount(string username, string password, int balance, int salary, string role)
+        public void CreateLocalAccount(string username, string password, int balance, int salary, string role)
         {
             if(Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == username).ToList().Count>0)
                 Views.ConsoleView.OutputString("That Username already exists.");
@@ -74,7 +74,7 @@ namespace CICD_Uppgift1.Models
         /// Method responsible for removing a users account from the database.
         /// </summary>
         /// <param name="username">the username of the account to be deleted</param>
-        public static void RemoveUserAccount(string username, string password)
+        public void RemoveUserAccount(string username, string password)
         {
             var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(x => x.UserName == username && x.Password == password).FirstOrDefault();
             if (accountQuery != null)
