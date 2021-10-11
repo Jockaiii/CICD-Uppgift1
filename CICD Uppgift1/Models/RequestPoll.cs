@@ -2,7 +2,7 @@
 
 namespace CICD_Uppgift1.Models
 {
-    internal class RequestPoll
+    public class RequestPoll
     {
         [Key]
         public string Username { get; set; } // Username of the account of which the requestpoll is created from.
