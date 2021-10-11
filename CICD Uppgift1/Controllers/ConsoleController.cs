@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CICD_Uppgift1.Controllers
 {
-    internal static class ConsoleController
+    public static class ConsoleController
     {
         internal static string UserName = string.Empty; // the inputed username
         internal static bool UserAccount { get; set; } // bool to determine if the signed in account is a admin account or not.
@@ -13,7 +13,7 @@ namespace CICD_Uppgift1.Controllers
         /// Else outputs failure to user.
         /// </summary>
         /// <returns> a true or false bool for promtLogin to give the user another try or proceed to password validation.</returns>
-        internal static bool UserNameInput()
+        public static bool UserNameInput()
         {
             var input = Console.ReadLine();
 
@@ -38,7 +38,7 @@ namespace CICD_Uppgift1.Controllers
         /// Method that validates the users inputed password.
         /// </summary>
         /// <returns>true or false to either call method for userAccountDetails or give the user another try (maximum 3) to type in the password</returns>
-        internal static bool PasswordInput()
+        public static bool PasswordInput()
         {
             var input = Console.ReadLine();
             string tempPassword;
@@ -67,7 +67,7 @@ namespace CICD_Uppgift1.Controllers
         /// Method responsible for taking in user input.
         /// </summary>
         /// <returns>the input inputed by the user.</returns>
-        internal static string ConsoleInput()
+        public static string ConsoleInput()
         {
             return Console.ReadLine();
         }
@@ -76,7 +76,7 @@ namespace CICD_Uppgift1.Controllers
         /// Method responsible for handling correct integer input from user.
         /// </summary>
         /// <returns>An integer if input is valid</returns>
-        internal static int IntTryParseConsoleInput()
+        public static int IntTryParseConsoleInput()
         {
             if (int.TryParse(Console.ReadLine(), out int result))
                 return result;

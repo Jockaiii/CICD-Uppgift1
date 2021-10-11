@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace CICD_Uppgift1.Views
 {
-    internal static class ConsoleView
+    public static class ConsoleView
     {
         /// <summary>
         /// Method that promts the login view for the user. aswell as calling the necessary methods for checking if the input is valid or not. and the corresponding output.
         /// </summary>
-        internal static void PromtLogin()
+        public static void PromtLogin()
         {
             do
             {
@@ -44,7 +44,7 @@ namespace CICD_Uppgift1.Views
         /// Method responsible for display the signed in menu for UserAccounts. aswell as calling the necessary methods or exiting the application or outputing data dependant on the users choice.
         /// </summary>
         /// <param name="signedInAccount">a locally stored UserAccount for output and project purposes.</param>
-        internal static void SignedInUserMenu(Models.UserAccount signedInAccount)
+        public static void SignedInUserMenu(Models.UserAccount signedInAccount)
         {
             bool exit = false;
             while(!exit)
@@ -102,7 +102,7 @@ namespace CICD_Uppgift1.Views
         /// Method responsible for display the signed in menu for AdminAccounts. aswell as calling the necessary methods or exiting the application or outputing data dependant on the users choice.
         /// </summary>
         /// <param name="signedInAccount">a locally stored UserAccount for output and project purposes.</param>
-        internal static void SignedInAdminMenu(Models.AdminAccount signedInAccount)
+        public static void SignedInAdminMenu(Models.AdminAccount signedInAccount)
         {
             bool exit = false;
             while(!exit)
@@ -172,7 +172,7 @@ namespace CICD_Uppgift1.Views
         /// Method responsible for outputing username not found to console.
         /// </summary>
         /// <param name="username">the inputed username from user</param>
-        internal static void UserNameNotFound(string username)
+        public static void UserNameNotFound(string username)
         {
             Console.Clear();
             Console.WriteLine($"No account with username: {username} could be found. Please try again");
@@ -182,7 +182,7 @@ namespace CICD_Uppgift1.Views
         /// Method responsible for outputting stored UserAccounts in the database.
         /// </summary>
         /// <param name="userAccounts">The stored UserAccounts in the database</param>
-        internal static void OutputCheckAccounts(List<Models.UserAccount> userAccounts)
+        public static void OutputCheckAccounts(List<Models.UserAccount> userAccounts)
         {
             foreach (var account in userAccounts)
                 Console.WriteLine($"UserName: {account.UserName} Password: {account.Password}");
@@ -192,7 +192,7 @@ namespace CICD_Uppgift1.Views
         /// Method responsible for outputting stored pollrequests in the database. aswell as updating necessary database tables.
         /// </summary>
         /// <param name="requestPolls">the stored requestpolls in the database</param>
-        internal static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)
+        public static void OutputCheckPollRequests(List<Models.RequestPoll> requestPolls)
         {
             for (int i = 0; i < requestPolls.Count; i++)
             {
@@ -201,7 +201,7 @@ namespace CICD_Uppgift1.Views
 
                 if (requestPolls[i].Role != "")
                 {
-                    Console.WriteLine($"[{i}] {requestPolls[i].Username} has requested to change their role from {requestPolls[i].OldRole} to {requestPolls[i].Role}\nDo you want to accept this request?\n [1] Yes\n [2] No");
+                    Console.WriteLine($"[{i+1}] {requestPolls[i].Username} has requested to change their role from {requestPolls[i].OldRole} to {requestPolls[i].Role}\nDo you want to accept this request?\n [1] Yes\n [2] No");
                     switch (Controllers.ConsoleController.ConsoleInput())
                     {
                         case "1":
@@ -226,7 +226,7 @@ namespace CICD_Uppgift1.Views
                 }
                 else
                 {
-                    Console.WriteLine($"[{i}] {requestPolls[i].Username} has requested to change their Salary from {requestPolls[i].OldSalary} to {requestPolls[i].Salary}");
+                    Console.WriteLine($"[{i+1}] {requestPolls[i].Username} has requested to change their Salary from {requestPolls[i].OldSalary} to {requestPolls[i].Salary}");
                     Console.WriteLine("Do you want to accept this request?\n [1] Yes\n [2] No");
                     switch (Controllers.ConsoleController.ConsoleInput())
                     {
@@ -257,7 +257,7 @@ namespace CICD_Uppgift1.Views
         /// Method responsible for outputting simple strings to the console.
         /// </summary>
         /// <param name="output">the string to be outputted</param>
-        internal static void OutputString(string output)
+        public static void OutputString(string output)
         {
             Console.WriteLine(output);
         }
@@ -266,7 +266,7 @@ namespace CICD_Uppgift1.Views
         /// Method responsible for outputting simple strings to the console but clearing the console from text beforehand.
         /// </summary>
         /// <param name="output">the string to be outputted</param>
-        internal static void OutputStringWithConsoleClear(string output)
+        public static void OutputStringWithConsoleClear(string output)
         {
             Console.Clear();
             Console.WriteLine(output);

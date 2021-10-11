@@ -2,7 +2,7 @@
 
 namespace CICD_Uppgift1.Models
 {
-    internal abstract class Account
+    public abstract class Account
     {
         [Key]
         public string UserName { get; set; } // Username string for the account
@@ -16,6 +16,6 @@ namespace CICD_Uppgift1.Models
         /// </summary>
         /// <param name="userName"></param>
         /// <returns>True or false dependent on if account data was found or not.</returns>
-        protected internal abstract bool GetAccountDetails(string userName);
+        public abstract bool GetAccountDetails(string userName);
     }
 }
