@@ -2,14 +2,14 @@
 
 namespace CICD_Uppgift1.Models
 {
-    internal class UserAccount : Account
+    public class UserAccount : Account
     {
         /// <summary>
         ///  method responsible for gathering AccountData after sucessful login.
         /// </summary>
         /// <param name="userName"></param>
         /// <returns>True or false dependent on if account data was found or not.</returns>
-        protected internal override bool GetAccountDetails(string userName)
+        public override bool GetAccountDetails(string userName)
         {
             var accountQuery = Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName.Contains(userName)).ToList();
 

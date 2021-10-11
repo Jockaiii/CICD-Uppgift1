@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CICD_Uppgift1.Helpers
 {
-    internal static class Seeder
+    public static class Seeder
     {
         /// <summary>
         /// Method that adds data to databas tables.
