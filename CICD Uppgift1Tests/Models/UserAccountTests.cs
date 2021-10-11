@@ -9,16 +9,26 @@ namespace CICD_Uppgift1.Models.Tests
     [TestFixture()]
     public class UserAccountTests
     {
-        [Test()]
-        public void GetAccountDetailsTest()
+        [TestCase("joakimandersson")]
+        [TestCase("bobby1")]
+        public void GetAccountDetailsTest(string userName)
         {
-            Assert.Fail();
+            var userAccount = new UserAccount();
+            if(userName == "joakimandersson")
+            {
+                Assert.IsTrue(userAccount.GetAccountDetails(userName));
+            }
+            else
+            {
+                Assert.IsFalse(userAccount.GetAccountDetails(userName));
+            }
+            
         }
 
         [Test()]
         public void RequestSalaryChangeTest()
         {
-            Assert.Fail();
+            var userAccount = new UserAccount();
         }
 
         [Test()]
@@ -27,10 +37,11 @@ namespace CICD_Uppgift1.Models.Tests
             Assert.Fail();
         }
 
-        [Test()]
-        public void RemoveAccountTest()
+        [TestCase("joakimandersson","joakimandersson")]
+        [TestCase("bob1","bobby123")]
+        public void RemoveAccountTest(string userName, string password)
         {
-            Assert.Fail();
+            
         }
     }
 }

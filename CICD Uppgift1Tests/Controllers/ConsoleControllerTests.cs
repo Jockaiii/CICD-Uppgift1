@@ -9,8 +9,8 @@ namespace CICD_Uppgift1.Controllers.Tests
     [TestFixture()]
     public class ConsoleControllerTests
     {
-        [Test()]
-        public void UserNameInputTest()
+        [TestCase("joakimandersson")]
+        public void UserNameInputTest(string inputString)
         {
             Assert.Fail();
         }
