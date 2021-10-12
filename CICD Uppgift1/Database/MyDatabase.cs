@@ -5,13 +5,13 @@ using System.IO;
 
 namespace CICD_Uppgift1.Database
 {
-    internal class MyDatabase : DbContext
+    public class MyDatabase : DbContext
     {
         private static string DatabaseFile { get; } = "SalarySystem.db"; //<-- The name of the database file.
-        internal static MyDatabase Db { get; set; } = new MyDatabase(); // A global property for a instance of the databse (DbContext functions etc)
-        internal DbSet<Models.UserAccount> UserAccounts { get; set; } // Used for EF to create UserAccounts table in the database.
-        internal DbSet<Models.AdminAccount> AdminAccounts { get; set; } // Used for EF to create AdminAccounts table in the database.
-        internal DbSet<Models.RequestPoll> RequestPolls { get; set; } // Used for EF to create RequestPolls table in the database.
+        public static MyDatabase Db { get; set; } = new MyDatabase(); // A global property for a instance of the databse (DbContext functions etc)
+        public DbSet<UserAccount> UserAccounts { get; set; } // Used for EF to create UserAccounts table in the database.
+        public DbSet<AdminAccount> AdminAccounts { get; set; } // Used for EF to create AdminAccounts table in the database.
+        public DbSet<RequestPoll> RequestPolls { get; set; } // Used for EF to create RequestPolls table in the database.
 
         /// <summary>
         /// Method that handles the path to the database aswell as the data source
