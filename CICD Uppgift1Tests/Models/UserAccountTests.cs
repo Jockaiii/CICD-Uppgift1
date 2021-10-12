@@ -24,24 +24,5 @@ namespace CICD_Uppgift1.Models.Tests
             }
             
         }
-
-        [Test()]
-        public void RequestSalaryChangeTest()
-        {
-            var userAccount = new UserAccount();
-        }
-
-        [Test()]
-        public void RequestRoleChangeTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestCase("joakimandersson","joakimandersson")]
-        [TestCase("bob1","bobby123")]
-        public void RemoveAccountTest(string userName, string password)
-        {
-            
-        }
     }
 }

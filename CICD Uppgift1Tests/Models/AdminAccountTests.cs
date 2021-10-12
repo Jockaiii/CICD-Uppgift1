@@ -9,40 +9,19 @@ namespace CICD_Uppgift1.Models.Tests
     [TestFixture()]
     public class AdminAccountTests
     {
-        [Test()]
-        public void GetAccountDetailsTest()
+        [TestCase("admin1")]
+        [TestCase("bob1")]
+        public void GetAccountDetailsTest(string userName)
         {
-            Assert.Fail();
-        }
-
-        [Test()]
-        public void CheckAccountsTest()
-        {
-            Assert.Fail();
-        }
-
-        [Test()]
-        public void CheckAccountRequestsTest()
-        {
-            Assert.Fail();
-        }
-
-        [Test()]
-        public void AdvanceSalarySystemTest()
-        {
-            Assert.Fail();
-        }
-
-        [Test()]
-        public void CreateLocalAccountTest()
-        {
-            Assert.Fail();
-        }
-
-        [Test()]
-        public void RemoveUserAccountTest()
-        {
-            Assert.Fail();
+            var adminAccount = new AdminAccount();
+            if(userName == "admin1")
+            {
+                Assert.IsTrue(adminAccount.GetAccountDetails(userName));
+            }
+            else
+            {
+                Assert.IsFalse(adminAccount.GetAccountDetails(userName));
+            }
         }
     }
 }
