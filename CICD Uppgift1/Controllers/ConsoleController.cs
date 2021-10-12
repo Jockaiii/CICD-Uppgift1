@@ -13,9 +13,8 @@ namespace CICD_Uppgift1.Controllers
         /// Else outputs failure to user.
         /// </summary>
         /// <returns> a true or false bool for promtLogin to give the user another try or proceed to password validation.</returns>
-        public static bool UserNameInput()
+        public static bool UserNameInput(string input)
         {
-            var input = Console.ReadLine();
 
             if (Database.MyDatabase.Db.UserAccounts.Where(w => w.UserName == input).ToList().Count > 0)
             {
@@ -38,9 +37,8 @@ namespace CICD_Uppgift1.Controllers
         /// Method that validates the users inputed password.
         /// </summary>
         /// <returns>true or false to either call method for userAccountDetails or give the user another try (maximum 3) to type in the password</returns>
-        public static bool PasswordInput()
+        public static bool PasswordInput(string input)
         {
-            var input = Console.ReadLine();
             string tempPassword;
 
             if (UserAccount)

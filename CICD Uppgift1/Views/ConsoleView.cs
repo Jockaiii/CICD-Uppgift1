@@ -11,15 +11,18 @@ namespace CICD_Uppgift1.Views
         /// </summary>
         public static void PromtLogin()
         {
+            var input = "";
             do
             {
                 Console.Write("UserName: ");
-            } while (!Controllers.ConsoleController.UserNameInput());
+                input = Console.ReadLine();
+            } while (!Controllers.ConsoleController.UserNameInput(input));
 
             for (int i = 0; i < 3; i++)
             {
                 Console.Write("Password: ");
-                if (Controllers.ConsoleController.PasswordInput())
+                input = Console.ReadLine();
+                if (Controllers.ConsoleController.PasswordInput(input))
                 {
                     if (Controllers.ConsoleController.UserAccount)
                     {
@@ -174,7 +177,6 @@ namespace CICD_Uppgift1.Views
         /// <param name="username">the inputed username from user</param>
         public static void UserNameNotFound(string username)
         {
-            Console.Clear();
             Console.WriteLine($"No account with username: {username} could be found. Please try again");
         }
 

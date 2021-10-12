@@ -9,28 +9,42 @@ namespace CICD_Uppgift1.Controllers.Tests
     [TestFixture()]
     public class ConsoleControllerTests
     {
-        [Test()]
-        public void UserNameInputTest()
+        [TestCase("joakimandersson")]
+        [TestCase("admin1")]
+        [TestCase("bob1")]
+        public void UserNameInputTest(string userName)
         {
-            Assert.Fail();
+            if(userName == "joakimandersson" || userName == "admin1")
+            {
+                Assert.IsTrue(ConsoleController.UserNameInput(userName));
+            }
+            else
+            {
+                Assert.IsFalse(ConsoleController.UserNameInput(userName));
+            }
         }
 
-        [Test()]
-        public void PasswordInputTest()
+        [TestCase("joakimandersson")]
+        [TestCase("admin1234")]
+        [TestCase("bob1")]
+        public void PasswordInputTest(string password)
         {
-            Assert.Fail();
-        }
 
-        [Test()]
-        public void ConsoleInputTest()
-        {
-            Assert.Fail();
-        }
-
-        [Test()]
-        public void IntTryParseConsoleInputTest()
-        {
-            Assert.Fail();
+            if (password == "joakimandersson")
+            {
+                ConsoleController.UserNameInput("joakimandersson");
+                Assert.IsTrue(ConsoleController.PasswordInput(password));
+            }
+            else if(password == "admin1234")
+            {
+                ConsoleController.UserNameInput("admin1");
+                Assert.IsTrue(ConsoleController.PasswordInput(password));
+            }
+            else
+            {
+                ConsoleController.UserNameInput("bob1");
+                Assert.IsFalse(ConsoleController.PasswordInput(password));
+            }
         }
     }
 }
